@@ -1,0 +1,1785 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>d0aa109d-9432-46b7-9682-a9e7220368e0</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\Debug\netcoreapp2.1\files\system\新文件夹\**" />
+    <Compile Remove="obj\**" />
+    <Compile Remove="wwwroot\code\**" />
+    <Compile Remove="wwwroot\layui\layui_exts\layui_excel - 复制\**" />
+    <Content Remove="bin\Debug\netcoreapp2.1\files\system\新文件夹\**" />
+    <Content Remove="obj\**" />
+    <Content Remove="wwwroot\code\**" />
+    <Content Remove="wwwroot\layui\layui_exts\layui_excel - 复制\**" />
+    <EmbeddedResource Remove="bin\Debug\netcoreapp2.1\files\system\新文件夹\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <EmbeddedResource Remove="wwwroot\code\**" />
+    <EmbeddedResource Remove="wwwroot\layui\layui_exts\layui_excel - 复制\**" />
+    <None Remove="bin\Debug\netcoreapp2.1\files\system\新文件夹\**" />
+    <None Remove="obj\**" />
+    <None Remove="wwwroot\code\**" />
+    <None Remove="wwwroot\layui\layui_exts\layui_excel - 复制\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\molstar.css" />
+    <Content Remove="wwwroot\js\plugins\molstar.js" />
+    <Content Remove="wwwroot\js\plugins\popper.js" />
+    <Content Remove="wwwroot\layui\css\style.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\char_state_tab.json" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\cn_synonym.txt" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\dict.txt" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\idf.txt" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\pos_prob_emit.json" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\pos_prob_start.json" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\pos_prob_trans.json" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\prob_emit.json" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\prob_trans.json" />
+    <_ContentIncludedByDefault Remove="bin\Debug\netcoreapp2.1\Resources\stopwords.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\annovar\80c8a56a-3895-4543-8a00-b27b7049ea98.hg19_multianno.txt" />
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\annovar\ed7437a8-e7c1-497a-bfdc-1b12b949dbca.hg19_multianno.txt" />
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\maf\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca_DBS87_catalogue.png" />
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\maf\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca_ID83_catalogue.png" />
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\maf\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca_maf_summary.png" />
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\maf\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca_SBS96.png" />
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\maf\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca_SBS96_catalogue.png" />
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\maf\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca_tmb.png" />
+    <Content Include="bin\Debug\netcoreapp2.1\files\system\maf\tmb.png" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\char_state_tab.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\cn_synonym.txt" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\dict.txt" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\idf.txt" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\pos_prob_emit.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\pos_prob_start.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\pos_prob_trans.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\prob_emit.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\prob_trans.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Resources\stopwords.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+    <PackageReference Include="Hangfire.MySql.Core2" Version="1.0.0" />
+    <PackageReference Include="Json.Net" Version="1.0.33" />
+    <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization.Policy" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.Internal" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.22" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.1.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Localization" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCaching.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.1.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Razor" Version="2.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="2.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="2.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.14" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.1.23" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.1.10" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="2.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.6" />
+    <PackageReference Include="Microsoft.Extensions.WebEncoders" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.1.14" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\netcoreapp2.1\Resources\" />
+    <Folder Include="wwwroot\upload\Files\" />
+    <Folder Include="wwwroot\upload\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp2.1\en-US\Main.resources.dll" />
+    <None Include="bin\Debug\netcoreapp2.1\files\003bdca0-458b-437d-bb36-8e80cd289a9c" />
+    <None Include="bin\Debug\netcoreapp2.1\files\00962301-4846-4037-8c55-08533341dcff" />
+    <None Include="bin\Debug\netcoreapp2.1\files\04b3e9b8-73be-41f0-b102-28b860553009" />
+    <None Include="bin\Debug\netcoreapp2.1\files\05ac2a8b-65e3-4dc7-8810-0ea9ab444303" />
+    <None Include="bin\Debug\netcoreapp2.1\files\069a723c-16c0-4b3c-b58c-24a6536ae057" />
+    <None Include="bin\Debug\netcoreapp2.1\files\0be62f65-2b45-42d9-8fe3-aebff33ad619" />
+    <None Include="bin\Debug\netcoreapp2.1\files\0e35ce8f-42c3-4464-87a2-022eb10de6fc" />
+    <None Include="bin\Debug\netcoreapp2.1\files\0f830dbb-b42f-4180-8b43-af2770f53630" />
+    <None Include="bin\Debug\netcoreapp2.1\files\0f94aa47-a329-433a-bb44-fbfc8920b7df" />
+    <None Include="bin\Debug\netcoreapp2.1\files\10813d5b-5704-43c8-b4d1-d0a7afb768ef" />
+    <None Include="bin\Debug\netcoreapp2.1\files\113a1253-dce0-4e3d-8034-12cf97b41737" />
+    <None Include="bin\Debug\netcoreapp2.1\files\11df3218-0ee0-4c5a-b49e-650493fb9fa4" />
+    <None Include="bin\Debug\netcoreapp2.1\files\12fcd9b7-5f2a-4b5b-aaed-b9c51ae10c45" />
+    <None Include="bin\Debug\netcoreapp2.1\files\15a09892-abbc-4b41-87f0-84a62aba918a" />
+    <None Include="bin\Debug\netcoreapp2.1\files\1af2e6ef-8b04-43d7-bb62-40ed6005fb33" />
+    <None Include="bin\Debug\netcoreapp2.1\files\1ba263bf-ef15-4174-b9d1-8c05f8dcd747" />
+    <None Include="bin\Debug\netcoreapp2.1\files\1cc95515-9412-49f0-8d6b-eaa22310ada9" />
+    <None Include="bin\Debug\netcoreapp2.1\files\1ce96da6-fc14-4584-b9f9-700a16b6ea2b" />
+    <None Include="bin\Debug\netcoreapp2.1\files\1f3a5c41-263c-4dae-bf80-357d7bc1bce4" />
+    <None Include="bin\Debug\netcoreapp2.1\files\1_350cdcd2-ae40-454e-aa1e-ab60f5fe7dfb" />
+    <None Include="bin\Debug\netcoreapp2.1\files\1_4e34eac6-20f6-4d6d-8902-5c8790233d9e" />
+    <None Include="bin\Debug\netcoreapp2.1\files\20626927-562b-476b-91e2-31c25e283c65" />
+    <None Include="bin\Debug\netcoreapp2.1\files\2211f4a0-0924-41c2-a9d1-751af644dfb1" />
+    <None Include="bin\Debug\netcoreapp2.1\files\24e1ec9f-f7ae-418c-ad0f-aeaea4e51243" />
+    <None Include="bin\Debug\netcoreapp2.1\files\25dbf910-15a3-4738-93c0-684a44ee79b6" />
+    <None Include="bin\Debug\netcoreapp2.1\files\26c203e7-0d66-4d10-922c-9c34cfb40594" />
+    <None Include="bin\Debug\netcoreapp2.1\files\27a0a558-be6a-4225-a65b-e94785c9a584" />
+    <None Include="bin\Debug\netcoreapp2.1\files\2ab13939-6ebd-423f-8c6a-1d49b122dd38" />
+    <None Include="bin\Debug\netcoreapp2.1\files\2b02355a-cf7a-4577-996e-3aaac1c42d78" />
+    <None Include="bin\Debug\netcoreapp2.1\files\2b7d2ffe-9084-430e-8bc4-e370e6a907bb" />
+    <None Include="bin\Debug\netcoreapp2.1\files\2d39994a-a1e5-4a8e-8570-9c2c85197b1f" />
+    <None Include="bin\Debug\netcoreapp2.1\files\32342249-bebb-4c0e-87eb-4c2230411720" />
+    <None Include="bin\Debug\netcoreapp2.1\files\3275765c-be24-4511-a9c3-18b2a4eaa54e" />
+    <None Include="bin\Debug\netcoreapp2.1\files\32d85c9d-7497-433b-8408-b52dd78eade6" />
+    <None Include="bin\Debug\netcoreapp2.1\files\331ac448-9b54-42a6-93db-e15cc4a088f5" />
+    <None Include="bin\Debug\netcoreapp2.1\files\37158e83-913b-4d9e-a387-dc9724379e1a" />
+    <None Include="bin\Debug\netcoreapp2.1\files\395ac81e-c999-4e6d-b22d-bb8d4b3f94f2" />
+    <None Include="bin\Debug\netcoreapp2.1\files\3ec173ed-3389-4167-b359-ea3e641a21e2" />
+    <None Include="bin\Debug\netcoreapp2.1\files\3f4bd6a0-b0be-4e0f-b762-9318a194ffc5" />
+    <None Include="bin\Debug\netcoreapp2.1\files\401ff721-63b2-4498-967d-920ff75cda86" />
+    <None Include="bin\Debug\netcoreapp2.1\files\406d572b-c918-4530-ae27-09a23dee4ebd" />
+    <None Include="bin\Debug\netcoreapp2.1\files\408cd261-0b90-4dd9-bd75-601cfacc1425" />
+    <None Include="bin\Debug\netcoreapp2.1\files\414616d0-dfac-4da9-92ba-cf3ade15070b" />
+    <None Include="bin\Debug\netcoreapp2.1\files\428f96b4-c2db-42cc-996f-49b3d38935be" />
+    <None Include="bin\Debug\netcoreapp2.1\files\440649e4-9252-446e-8839-4e79459064d4" />
+    <None Include="bin\Debug\netcoreapp2.1\files\480ab695-d3b6-4c37-ba44-5e1c09da5dc4" />
+    <None Include="bin\Debug\netcoreapp2.1\files\4b4a9ab1-c106-4f6e-9004-b2b07aa5e005" />
+    <None Include="bin\Debug\netcoreapp2.1\files\4b8aa764-8a47-47ae-98f2-801f3dac07d8" />
+    <None Include="bin\Debug\netcoreapp2.1\files\4dcbd81e-5cef-446f-8adb-7eed2bbbae93" />
+    <None Include="bin\Debug\netcoreapp2.1\files\55c6dd12-4360-43d9-8a9a-a789baf8c743" />
+    <None Include="bin\Debug\netcoreapp2.1\files\57c5dcb2-c233-4064-bd0e-eeb42233f556" />
+    <None Include="bin\Debug\netcoreapp2.1\files\597fcbe3-fb9b-4a81-9d71-c4cb09ed0ae0" />
+    <None Include="bin\Debug\netcoreapp2.1\files\60b27f96-1f1a-462a-b9de-d050db0286f9" />
+    <None Include="bin\Debug\netcoreapp2.1\files\651634b4-8177-4cb8-98bd-5ad6937aeb7f" />
+    <None Include="bin\Debug\netcoreapp2.1\files\6562512d-a995-4ed0-acf3-4f5ee66bdf7c" />
+    <None Include="bin\Debug\netcoreapp2.1\files\6716bd60-2a28-4839-88e6-ea1be23dd9d6" />
+    <None Include="bin\Debug\netcoreapp2.1\files\6c102a81-5805-4a71-af66-9c5e1e3c8109" />
+    <None Include="bin\Debug\netcoreapp2.1\files\6ce0ba8c-807a-45fe-a314-d7772263350c" />
+    <None Include="bin\Debug\netcoreapp2.1\files\6da351ed-1e5f-44d5-9732-c6568722e7e2" />
+    <None Include="bin\Debug\netcoreapp2.1\files\731c5d92-02ed-4e69-84db-1466bd26a63a" />
+    <None Include="bin\Debug\netcoreapp2.1\files\73775f6c-7cf8-41bd-80a4-614d5120c6fa" />
+    <None Include="bin\Debug\netcoreapp2.1\files\74ac1c1e-fc04-4cfe-b4f8-dac0e35c5aaf" />
+    <None Include="bin\Debug\netcoreapp2.1\files\75f452f7-b0b2-41b6-8b8f-3f64b9d52c75" />
+    <None Include="bin\Debug\netcoreapp2.1\files\7d623b0b-0710-4a04-87b7-ef1f04926bf6" />
+    <None Include="bin\Debug\netcoreapp2.1\files\7dc1d9e8-c691-4430-b8d4-02aa5c32a2a2" />
+    <None Include="bin\Debug\netcoreapp2.1\files\7f3c5505-2554-4206-9d1a-920f0145eae3" />
+    <None Include="bin\Debug\netcoreapp2.1\files\8361706c-20bb-4bd6-afc7-682fe11382c7" />
+    <None Include="bin\Debug\netcoreapp2.1\files\85033107-8f2e-4e35-a566-d4033bcc8c50" />
+    <None Include="bin\Debug\netcoreapp2.1\files\87d5f58e-f4e9-4a9e-9b49-4eff8a7705e8" />
+    <None Include="bin\Debug\netcoreapp2.1\files\8abd6bc9-a119-46cc-b99e-cff54a0523c6" />
+    <None Include="bin\Debug\netcoreapp2.1\files\8c0ccb73-1dac-45ac-b015-a6f1e9c13882" />
+    <None Include="bin\Debug\netcoreapp2.1\files\8cb6d630-e6b0-47ab-9c4b-0247a523dc34" />
+    <None Include="bin\Debug\netcoreapp2.1\files\97126844-2e90-455b-9a2a-88099f491822" />
+    <None Include="bin\Debug\netcoreapp2.1\files\9842e627-c151-41d7-a967-fb20378457f8" />
+    <None Include="bin\Debug\netcoreapp2.1\files\a2ed55d0-80e6-45ed-aaa8-919260a8bf14" />
+    <None Include="bin\Debug\netcoreapp2.1\files\a3a159c4-4cfb-4f3d-b7ca-764cd7afe5ea" />
+    <None Include="bin\Debug\netcoreapp2.1\files\a4d3a698-c327-4316-b49c-b8e78b4d5939" />
+    <None Include="bin\Debug\netcoreapp2.1\files\a8287082-c783-4f55-9553-67ed09c64fb6" />
+    <None Include="bin\Debug\netcoreapp2.1\files\abb6122d-13b5-4bd3-b651-404359b69cb2" />
+    <None Include="bin\Debug\netcoreapp2.1\files\ad4350cc-56f0-42e5-bd0b-977c26fa3b74" />
+    <None Include="bin\Debug\netcoreapp2.1\files\ae2a76d9-b255-4bc2-8b31-e91943fe432d" />
+    <None Include="bin\Debug\netcoreapp2.1\files\b5eb5ad4-e9e5-4d0c-aa9e-2db42ce1d778" />
+    <None Include="bin\Debug\netcoreapp2.1\files\b78d7736-0c1d-44d4-aef2-9e71cdc3215e" />
+    <None Include="bin\Debug\netcoreapp2.1\files\b847a342-681a-47e4-bc0e-bee4730899b1" />
+    <None Include="bin\Debug\netcoreapp2.1\files\bd3abcea-5a78-4ed3-aba7-34a792a2c157" />
+    <None Include="bin\Debug\netcoreapp2.1\files\beaf9dc3-a601-4696-b1ec-a79b3e8e2820" />
+    <None Include="bin\Debug\netcoreapp2.1\files\bf802609-3c32-4ae3-9973-79d0426796b7" />
+    <None Include="bin\Debug\netcoreapp2.1\files\c2f2423a-574f-4630-a62e-bf13ea3bb760" />
+    <None Include="bin\Debug\netcoreapp2.1\files\c3006c6b-2703-4507-83e2-c2eb304e45ab" />
+    <None Include="bin\Debug\netcoreapp2.1\files\c5721717-2b51-44cd-9ed6-3d00939120f0" />
+    <None Include="bin\Debug\netcoreapp2.1\files\c895f5d2-9b82-48e6-a71f-414a03204253" />
+    <None Include="bin\Debug\netcoreapp2.1\files\d3901796-9747-42c0-b0b5-223648dee100" />
+    <None Include="bin\Debug\netcoreapp2.1\files\d45da035-dd9c-4a59-a56d-7815aa1be9a1" />
+    <None Include="bin\Debug\netcoreapp2.1\files\d5be2510-f2ca-4f41-a0df-0257965f5dd1" />
+    <None Include="bin\Debug\netcoreapp2.1\files\d968eace-af6c-4cb4-b76e-7e298f48cf22" />
+    <None Include="bin\Debug\netcoreapp2.1\files\da05f0d7-c01b-4745-a008-353d04cd07bf" />
+    <None Include="bin\Debug\netcoreapp2.1\files\data_mutations_86ddb18b-b42a-43d2-81e4-52981b4e4613" />
+    <None Include="bin\Debug\netcoreapp2.1\files\dc02182c-0295-4aa2-8b46-bfad0c1b98de" />
+    <None Include="bin\Debug\netcoreapp2.1\files\e61cc51d-17e9-4ef5-82b1-aaf94c08a249" />
+    <None Include="bin\Debug\netcoreapp2.1\files\e681bff2-3346-4ef6-8fc4-943849fca8c1" />
+    <None Include="bin\Debug\netcoreapp2.1\files\e6e3876f-565d-4642-badb-d2a5f6e618b4" />
+    <None Include="bin\Debug\netcoreapp2.1\files\e706fa17-4023-4f70-80a7-7555fe445076" />
+    <None Include="bin\Debug\netcoreapp2.1\files\e93ea116-92bf-46e3-a2b3-656260603db8" />
+    <None Include="bin\Debug\netcoreapp2.1\files\eef29164-2fdd-46c0-9cd1-a0d6843cbbf8" />
+    <None Include="bin\Debug\netcoreapp2.1\files\f0a6f381-699c-47ee-8f2a-31ddac872005" />
+    <None Include="bin\Debug\netcoreapp2.1\files\f27cd59f-d8e6-4f31-9fb6-ee9b3df280ef" />
+    <None Include="bin\Debug\netcoreapp2.1\files\f2fbbb80-b047-4f94-ba26-bc2d39d257c5" />
+    <None Include="bin\Debug\netcoreapp2.1\files\f404ec2c-897e-468e-9210-60706d2213bd" />
+    <None Include="bin\Debug\netcoreapp2.1\files\fcc82955-b767-45fc-8c8d-2843dd3abb4c" />
+    <None Include="bin\Debug\netcoreapp2.1\files\fe2f95e4-367b-42f0-a0af-902818c97757" />
+    <None Include="bin\Debug\netcoreapp2.1\files\nodata_decc21d3-e64e-4531-9d70-1d55ea6cebcd" />
+    <None Include="bin\Debug\netcoreapp2.1\files\system\annovar\7d623b0b-0710-4a04-87b7-ef1f04926bf6" />
+    <None Include="bin\Debug\netcoreapp2.1\files\system\annovar\ed7437a8-e7c1-497a-bfdc-1b12b949dbca.csv" />
+    <None Include="bin\Debug\netcoreapp2.1\files\system\annovar\ed7437a8-e7c1-497a-bfdc-1b12b949dbca.hg19_multianno.csv" />
+    <None Include="bin\Debug\netcoreapp2.1\files\system\maf\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca_tmb.csv" />
+    <None Include="bin\Debug\netcoreapp2.1\files\system\maf\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca_var_annovar.maf" />
+    <None Include="bin\Debug\netcoreapp2.1\files\system\maf\tmb.csv" />
+    <None Include="bin\Debug\netcoreapp2.1\files\tan.txt.hg19_multianno_ed7437a8-e7c1-497a-bfdc-1b12b949dbca" />
+    <None Include="bin\Debug\netcoreapp2.1\files\test_strelka_686a716f-208f-4a65-bc46-fdda404188ca" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-02.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-03.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-04.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-05.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-06.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-07.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-08.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-09.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-10.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-11.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-12.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-22.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-23.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-24.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-25.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-26.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-27.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-29.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-30.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-03-31.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-01.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-02.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-05.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-06.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-07.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-12.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-13.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-14.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-15.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-16.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-17.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-18.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-19.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-22.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-23.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-24.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-26.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-27.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-28.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-29.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-04-30.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-01.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-02.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-03.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-04.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-05.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-06.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-07.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-08.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-10.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-11.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-12.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-13.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-14.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-15.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-17.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-18.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-19.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-20.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-21.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-22.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-23.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-24.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-25.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-26.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-27.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-28.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-29.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-30.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-05-31.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-01.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-02.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-03.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-04.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-05.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-07.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-08.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-09.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-10.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-all-2021-06-11.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-02.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-03.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-04.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-05.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-06.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-07.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-08.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-09.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-10.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-11.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-12.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-22.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-23.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-24.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-25.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-26.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-27.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-29.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-30.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-03-31.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-01.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-02.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-05.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-06.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-07.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-12.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-13.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-14.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-15.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-16.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-17.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-18.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-19.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-22.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-23.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-24.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-26.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-27.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-28.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-29.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-04-30.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-01.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-02.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-03.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-04.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-05.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-06.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-07.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-08.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-10.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-11.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-12.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-13.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-14.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-15.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-17.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-18.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-19.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-20.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-21.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-22.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-23.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-24.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-25.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-26.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-27.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-28.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-29.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-30.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-05-31.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-01.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-02.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-03.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-04.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-05.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-07.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-08.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-09.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-10.log" />
+    <None Include="bin\Debug\netcoreapp2.1\nlog-my-2021-06-11.log" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\1S78.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\1YY8.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\2OSL.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\3GIZ.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\3GKW.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\4IOI.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\5B8C.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\5GRJ.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\5SX5.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\5WT9.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\5X8M.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\5XJ3.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\5XXY.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\6AL4.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\6B3S.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\6FJM.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\6JBT.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\6JX0.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\6WVZ.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\6Y97.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\7CGW.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\7CU5.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\7DHA.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\7V5N.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\pdbfile\7WVM.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\scripts\shell.sh" />
+    <None Include="bin\Debug\netcoreapp2.1\scripts\TMB.r" />
+    <None Include="bin\Debug\netcoreapp2.1\zh-CN\Main.resources.dll" />
+    <None Include="Templates\ControllerGenerator\ApiControllerWIthActions.cshtml" />
+    <None Include="Templates\ControllerGenerator\ApiControllerWithContext.cshtml" />
+    <None Include="Templates\ControllerGenerator\ApiEmptyController.cshtml" />
+    <None Include="Templates\ControllerGenerator\ControllerWithActions.cshtml" />
+    <None Include="Templates\ControllerGenerator\EmptyController.cshtml" />
+    <None Include="Templates\ControllerGenerator\MvcControllerWithContext.cshtml" />
+    <None Include="Templates\MvcLayout\Error.cshtml" />
+    <None Include="Templates\MvcLayout\_Layout.cshtml" />
+    <None Include="Templates\Startup\ReadMe.cshtml" />
+    <None Include="Templates\Startup\Startup.cshtml" />
+    <None Include="Templates\ViewGenerator\Create.cshtml" />
+    <None Include="Templates\ViewGenerator\Delete.cshtml" />
+    <None Include="Templates\ViewGenerator\Details.cshtml" />
+    <None Include="Templates\ViewGenerator\Edit.cshtml" />
+    <None Include="Templates\ViewGenerator\List.cshtml" />
+    <None Include="Templates\ViewGenerator\_CookieConsentPartial.cshtml" />
+    <None Include="Templates\ViewGenerator\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Analysis\bar_progress.cshtml" />
+    <None Include="Views\Analysis\calendar.cshtml" />
+    <None Include="Views\Analysis\map_china.cshtml" />
+    <None Include="Views\Analysis\map_scatter.cshtml" />
+    <None Include="Views\Analysis\num_panel.cshtml" />
+    <None Include="Views\Analysis\stacked_line_chart.cshtml" />
+    <None Include="Views\Analysis\table_list.cshtml" />
+    <None Include="Views\Analysis\table_panel.cshtml" />
+    <None Include="Views\Analysis\table_rank_panel.cshtml" />
+    <None Include="Views\Analysis\tab_card.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\base.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\batchEditChoices.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\bo\attr.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\bo\copy.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\bo\dialog.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\bo\edit.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\bo\list.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\bo\manage.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\bo\setCategoryDialog.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\components\upload\dialog.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formDef\copy.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formDef\create.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formDef\design.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formDef\dynamic.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formDef\linkdataConfig.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formDef\list.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formDef\rules.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formDef\script.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formPrint\edit.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formPrint\list.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formPrint\pdf.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formPrint\preview.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formPrint\print.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formRights\dialog.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formRights\rights.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formUse\detail.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formUse\index.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\form\formUse\init.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\Index.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\org\partyDialog\org.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\org\partyDialog\person.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\preview.cshtml" />
+    <None Include="Views\CRM_FORMDESIGNER\verify.cshtml" />
+    <None Include="Views\ERROR\401.cshtml" />
+    <None Include="Views\ERROR\permission.cshtml" />
+    <None Include="Views\FD_FORM_PERMISSION\Create.cshtml" />
+    <None Include="Views\FD_FORM_PERMISSION\Delete.cshtml" />
+    <None Include="Views\FD_FORM_PERMISSION\Details.cshtml" />
+    <None Include="Views\FD_FORM_PERMISSION\Edit.cshtml" />
+    <None Include="Views\FD_FORM_PERMISSION\Formlist.cshtml" />
+    <None Include="Views\FD_FORM_PERMISSION\Index.cshtml" />
+    <None Include="Views\FD_FORM_PERMISSION\Orglist.cshtml" />
+    <None Include="Views\FD_FORM_PERMISSION\Rolelist.cshtml" />
+    <None Include="Views\Home\SystemM.cshtml" />
+    <None Include="Views\Home\Login.cshtml" />
+    <None Include="Views\PF_FILE\Create.cshtml" />
+    <None Include="Views\PF_FILE\Edit.cshtml" />
+    <None Include="Views\PF_FILE\imgViewer.cshtml" />
+    <None Include="Views\PF_FILE\Index.cshtml" />
+    <None Include="Views\PF_FILE\pdfViewer.cshtml" />
+    <None Include="Views\PF_FILE\wpeViewer.cshtml" />
+    <None Include="Views\PF_LM\Create.cshtml" />
+    <None Include="Views\PF_LM\Details.cshtml" />
+    <None Include="Views\PF_LM\Edit.cshtml" />
+    <None Include="Views\PF_LM\Index.cshtml" />
+    <None Include="Views\PF_LOG\LogDetail.cshtml" />
+    <None Include="Views\PF_LOG\LogIndex.cshtml" />
+    <None Include="Views\PF_MENU\Create.cshtml" />
+    <None Include="Views\PF_MENU\Edit.cshtml" />
+    <None Include="Views\PF_MENU\Index.cshtml" />
+    <None Include="Views\PF_MSG\Index.cshtml" />
+    <None Include="Views\PF_MSG_STATE\Create.cshtml" />
+    <None Include="Views\PF_MSG_STATE\Detail.cshtml" />
+    <None Include="Views\PF_MSG_STATE\Index.cshtml" />
+    <None Include="Views\PF_NEW\Create.cshtml" />
+    <None Include="Views\PF_NEW\Detail.cshtml" />
+    <None Include="Views\PF_NEW\Draft.cshtml" />
+    <None Include="Views\PF_NEW\Edit.cshtml" />
+    <None Include="Views\PF_NEW\Index.cshtml" />
+    <None Include="Views\PF_NEW\NewList.cshtml" />
+    <None Include="Views\PF_NEW\New_more.cshtml" />
+    <None Include="Views\PF_NEW\Read.cshtml" />
+    <None Include="Views\PF_ORG\Create.cshtml" />
+    <None Include="Views\PF_ORG\Edit.cshtml" />
+    <None Include="Views\PF_ORG\Index.cshtml" />
+    <None Include="Views\PF_PERMISSION\permission.cshtml" />
+    <None Include="Views\PF_PERMISSION\permission_form.cshtml" />
+    <None Include="Views\PF_PERMISSION\permission_sel.cshtml" />
+    <None Include="Views\PF_PRINT_TMPL\Create.cshtml" />
+    <None Include="Views\PF_PRINT_TMPL\Edit.cshtml" />
+    <None Include="Views\PF_PRINT_TMPL\Index.cshtml" />
+    <None Include="Views\PF_PRINT_TMPL\ShowExport.cshtml" />
+    <None Include="Views\PF_PROFILE\edit.cshtml" />
+    <None Include="Views\PF_PROFILE\edit_self.cshtml" />
+    <None Include="Views\PF_PROFILE\index.cshtml" />
+    <None Include="Views\PF_REMINDER\Create.cshtml" />
+    <None Include="Views\PF_REMINDER\Delete.cshtml" />
+    <None Include="Views\PF_REMINDER\Details.cshtml" />
+    <None Include="Views\PF_REMINDER\Edit.cshtml" />
+    <None Include="Views\PF_REMINDER\Index.cshtml" />
+    <None Include="Views\PF_ROLE\role.cshtml" />
+    <None Include="Views\PF_ROLE\role_distribute_p.cshtml" />
+    <None Include="Views\PF_ROLE\role_distribute_u.cshtml" />
+    <None Include="Views\PF_ROLE\role_form.cshtml" />
+    <None Include="Views\PF_ROLE\role_sel.cshtml" />
+    <None Include="Views\PF_STATE\Create.cshtml" />
+    <None Include="Views\PF_STATE\Delete.cshtml" />
+    <None Include="Views\PF_STATE\Details.cshtml" />
+    <None Include="Views\PF_STATE\Edit.cshtml" />
+    <None Include="Views\PF_STATE\Index.cshtml" />
+    <None Include="Views\PF_USER\user.cshtml" />
+    <None Include="Views\PF_USER\user_create.cshtml" />
+    <None Include="Views\PF_USER\user_da.cshtml" />
+    <None Include="Views\PF_USER\user_da_details.cshtml" />
+    <None Include="Views\PF_USER\user_da_sel.cshtml" />
+    <None Include="Views\PF_USER\user_da_sel_for_msg.cshtml" />
+    <None Include="Views\PF_USER\user_mypassword.cshtml" />
+    <None Include="Views\PF_USER\user_password.cshtml" />
+    <None Include="Views\PF_USER\user_role_sel_for_msg.cshtml" />
+    <None Include="Views\PF_USER\user_sel.cshtml" />
+    <None Include="Views\PF_USER_ORG\Create.cshtml" />
+    <None Include="Views\PF_USER_ORG\Delete.cshtml" />
+    <None Include="Views\PF_USER_ORG\Details.cshtml" />
+    <None Include="Views\PF_USER_ORG\Edit.cshtml" />
+    <None Include="Views\PF_USER_ORG\Index.cshtml" />
+    <None Include="Views\Report\formReport.cshtml" />
+    <None Include="Views\Report\remoteReport.cshtml" />
+    <None Include="Views\Report\Report.cshtml" />
+    <None Include="Views\Shared\EditorTemplates\Check.cshtml" />
+    <None Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <None Include="Views\Shared\EditorTemplates\Org.cshtml" />
+    <None Include="Views\Shared\EditorTemplates\Radio.cshtml" />
+    <None Include="Views\Shared\EditorTemplates\Select.cshtml" />
+    <None Include="Views\Shared\_Index.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\_ViewImports.cshtml" />
+    <None Include="Views\_ViewStart.cshtml" />
+    <None Include="wwwroot\highcharts\css\annotations\popup.scss" />
+    <None Include="wwwroot\highcharts\css\highcharts.scss" />
+    <None Include="wwwroot\highcharts\css\stocktools\gui.scss" />
+    <None Include="wwwroot\highcharts\css\themes\dark-unica.scss" />
+    <None Include="wwwroot\highcharts\css\themes\grid-light.scss" />
+    <None Include="wwwroot\highcharts\css\themes\sand-signika.scss" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\A11yI18n.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Accessibility.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\AccessibilityComponent.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\AnnotationsA11y.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\ContainerComponent.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\InfoRegionsComponent.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\LegendComponent.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\MenuComponent.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\RangeSelectorComponent.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\SeriesComponent\ForcedMarkers.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\SeriesComponent\NewDataAnnouncer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\SeriesComponent\SeriesComponent.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\SeriesComponent\SeriesDescriber.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\SeriesComponent\SeriesKeyboardNavigation.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Components\ZoomComponent.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\FocusBorder.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\HighContrastMode.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\HighContrastTheme.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\KeyboardNavigation.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\KeyboardNavigationHandler.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Options\DeprecatedOptions.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Options\LangOptions.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Options\Options.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Utils\Announcer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Utils\ChartUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Utils\DOMElementProvider.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Utils\EventProvider.js" />
+    <None Include="wwwroot\highcharts\es-modules\Accessibility\Utils\HTMLUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Animation\AnimationUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Animation\Fx.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\Axis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\Axis3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\AxisDefaults.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\BrokenAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\Color\ColorAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\Color\ColorAxisComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\Color\ColorAxisDefaults.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\DateTimeAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\GridAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\LogarithmicAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\MapAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\NavigatorAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\OrdinalAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\PlotLineOrBand\PlotLineOrBand.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\PlotLineOrBand\PlotLineOrBandAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\RadialAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\ScrollbarAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\SolidGaugeAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\StackingAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\Tick.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\Tick3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\TreeGridAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\TreeGridTick.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\WaterfallAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Axis\ZAxis.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Chart\Chart.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Chart\Chart3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Chart\ChartDefaults.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Chart\GanttChart.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Chart\MapChart.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Chart\StockChart.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Color\Color.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Color\Palette.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\DefaultOptions.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\FormatUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Foundation.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Geometry\CircleUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Geometry\GeometryUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Globals.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\HttpUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Legend\Legend.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Legend\LegendSymbol.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\MSPointer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Navigator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Pointer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\HTML\AST.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\HTML\HTMLElement.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\HTML\HTMLRenderer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\RendererRegistry.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\RendererUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\SVG\SVGElement.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\SVG\SVGElement3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\SVG\SVGLabel.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\SVG\SVGRenderer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\SVG\SVGRenderer3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\SVG\Symbols.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Renderer\SVG\TextBuilder.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Responsive.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Scrollbar.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\ScrollbarDefaults.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Series\DataLabel.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Series\Point.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Series\Series.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Series\Series3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Series\SeriesDefaults.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Series\SeriesRegistry.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Time.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Tooltip.js" />
+    <None Include="wwwroot\highcharts\es-modules\Core\Utilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Annotations.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Controllables\ControllableCircle.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Controllables\ControllableImage.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Controllables\ControllableLabel.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Controllables\ControllablePath.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Controllables\ControllableRect.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\ControlPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Mixins\ControllableMixin.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Mixins\EventEmitterMixin.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Mixins\MarkerMixin.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\MockPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\NavigationBindings.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Popup.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\BasicAnnotation.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\CrookedLine.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\ElliottWave.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\Fibonacci.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\InfinityLine.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\Measure.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\Pitchfork.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\Tunnel.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Annotations\Types\VerticalLine.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\ArrowSymbols.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\BoostCanvas.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\Boost.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\BoostableMap.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\Boostables.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\BoostAttach.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\BoostInit.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\BoostOptions.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\BoostOverrides.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\BoostUtils.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\NamedColors.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\WGLRenderer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\WGLShader.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Boost\WGLVBuffer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\CurrentDateIndication.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Data.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\DataGrouping.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Debugger\Debugger.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Debugger\ErrorMessages.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\DownloadURL.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\DraggablePoints.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\DragPanes.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Drilldown.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\ExportData.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Exporting\Exporting.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Exporting\ExportingDefaults.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Exporting\ExportingSymbols.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\FullScreen.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\GeoJSON.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\MarkerClusters.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Math3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\NoDataToDisplay.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\OfflineExporting\OfflineExporting.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\OfflineExporting\OfflineExportingDefaults.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\OldiePolyfills.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Oldie\Oldie.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Oldie\VMLAxis3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Oldie\VMLRenderer3D.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\OverlappingDataLabels.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Pane.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\ParallelCoordinates.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\PatternFill.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Polar.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\PriceIndication.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\RangeSelector.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\ScrollablePlotArea.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\SeriesLabel.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\ChartSonify.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\Earcon.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\Instrument.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\InstrumentDefinitions.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\MusicalFrequencies.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\Options.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\PointSonify.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\Sonification.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\Timeline.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Sonification\Utilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Stacking.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\StaticScale.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\Avocado.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\DarkBlue.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\DarkGreen.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\DarkUnica.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\Gray.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\Grid.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\GridLight.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\HighContrastDark.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\HighContrastLight.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\SandSignika.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\Skies.js" />
+    <None Include="wwwroot\highcharts\es-modules\Extensions\Themes\Sunset.js" />
+    <None Include="wwwroot\highcharts\es-modules\Gantt\Connection.js" />
+    <None Include="wwwroot\highcharts\es-modules\Gantt\Pathfinder.js" />
+    <None Include="wwwroot\highcharts\es-modules\Gantt\PathfinderAlgorithms.js" />
+    <None Include="wwwroot\highcharts\es-modules\Gantt\Tree.js" />
+    <None Include="wwwroot\highcharts\es-modules\Maps\MapNavigation.js" />
+    <None Include="wwwroot\highcharts\es-modules\Maps\MapNavigationOptionsDefault.js" />
+    <None Include="wwwroot\highcharts\es-modules\Maps\MapPointer.js" />
+    <None Include="wwwroot\highcharts\es-modules\Maps\MapSymbols.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\highcharts-3d.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\highcharts-more.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\highcharts.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\accessibility.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\annotations-advanced.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\annotations.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\arrow-symbols.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\boost-canvas.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\boost.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\broken-axis.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\bullet.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\coloraxis.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\current-date-indicator.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\cylinder.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\data.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\datagrouping.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\debugger.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\dependency-wheel.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\dotplot.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\drag-panes.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\draggable-points.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\drilldown.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\dumbbell.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\export-data.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\exporting.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\full-screen.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\funnel.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\funnel3d.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\gantt.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\grid-axis.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\heatmap.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\heikinashi.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\histogram-bellcurve.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\hollowcandlestick.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\item-series.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\lollipop.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\marker-clusters.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\networkgraph.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\no-data-to-display.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\offline-exporting.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\oldie-polyfills.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\oldie.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\organization.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\overlapping-datalabels.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\parallel-coordinates.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\pareto.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\pathfinder.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\pattern-fill.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\price-indicator.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\pyramid3d.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\sankey.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\series-label.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\solid-gauge.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\sonification.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\static-scale.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\stock-tools.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\stock.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\streamgraph.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\sunburst.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\tilemap.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\timeline.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\treegrid.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\treemap.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\variable-pie.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\variwide.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\vector.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\venn.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\windbarb.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\wordcloud.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\modules\xrange.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\avocado.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\dark-blue.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\dark-green.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\dark-unica.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\gray.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\grid-light.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\grid.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\high-contrast-dark.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\high-contrast-light.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\sand-signika.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\skies.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\masters\themes\sunset.src.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\CenteredSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\ColorMapSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\ColorSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\DerivedSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\DrawPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\IndicatorRequired.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\MultipleLines.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\Navigation.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\NelderMead.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\Nodes.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\OnSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\Polygon.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\ReduceArray.js" />
+    <None Include="wwwroot\highcharts\es-modules\Mixins\TreeSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Area3DSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\AreaRange\AreaRangePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\AreaRange\AreaRangeSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\AreaSplineRange\AreaSplineRangeSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\AreaSpline\AreaSplineSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Area\AreaSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bar\BarSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bellcurve\BellcurveSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\BoxPlot\BoxPlotSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bubble\BubbleLegendComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bubble\BubbleLegendDefaults.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bubble\BubbleLegendItem.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bubble\BubblePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bubble\BubbleSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bullet\BulletPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Bullet\BulletSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Candlestick\CandlestickSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Column3D\Column3DComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\ColumnPyramid\ColumnPyramidSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\ColumnRange\ColumnRangePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\ColumnRange\ColumnRangeSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Column\ColumnDataLabel.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Column\ColumnSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Cylinder\CylinderComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Cylinder\CylinderPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Cylinder\CylinderSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\DependencyWheel\DependencyWheelPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\DependencyWheel\DependencyWheelSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\DotPlot\DotPlotSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Dumbbell\DumbbellPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Dumbbell\DumbbellSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\ErrorBar\ErrorBarSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Flags\FlagsPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Flags\FlagsSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Flags\FlagsSymbols.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Funnel3D\Funnel3DComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Funnel3D\Funnel3DPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Funnel3D\Funnel3DSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Funnel\FunnelSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Gantt\GanttPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Gantt\GanttSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Gauge\GaugePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Gauge\GaugeSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Heatmap\HeatmapPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Heatmap\HeatmapSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\HeikinAshi\HeikinAshiPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\HeikinAshi\HeikinAshiSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Histogram\HistogramSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\HollowCandlestick\HollowCandlestickPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\HollowCandlestick\HollowCandlestickSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Item\ItemPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Item\ItemSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Line\LineSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Lollipop\LollipopPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Lollipop\LollipopSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\MapBubble\MapBubblePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\MapBubble\MapBubbleSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\MapLine\MapLineSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\MapPoint\MapPointPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\MapPoint\MapPointSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Map\MapPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Map\MapSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Networkgraph\DraggableNodes.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Networkgraph\Integrations.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Networkgraph\Layouts.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Networkgraph\Networkgraph.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Networkgraph\QuadTree.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\OHLC\OHLCPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\OHLC\OHLCSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Organization\OrganizationPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Organization\OrganizationSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\PackedBubble\PackedBubbleComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\PackedBubble\PackedBubblePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\PackedBubble\PackedBubbleSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\ParetoSeries\ParetoSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Pie3D\Pie3DComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Pie3D\Pie3DPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Pie3D\Pie3DSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Pie\PieDataLabel.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Pie\PiePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Pie\PieSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Polygon\PolygonSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Pyramid3D\Pyramid3DSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Pyramid\PyramidSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Sankey\SankeyPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Sankey\SankeySeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Scatter3D\Scatter3DPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Scatter3D\Scatter3DSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Scatter\ScatterSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\SolidGauge\SolidGaugeComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\SolidGauge\SolidGaugeSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Spline\SplineSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Streamgraph\StreamgraphSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Sunburst\SunburstPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Sunburst\SunburstSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Sunburst\SunburstUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Tilemap\TilemapComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Tilemap\TilemapPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Tilemap\TilemapSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Tilemap\TilemapShapes.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Timeline\TimelinePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Timeline\TimelineSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Treemap\TreemapAlgorithmGroup.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Treemap\TreemapComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Treemap\TreemapPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Treemap\TreemapSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Treemap\TreemapUtilities.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\VariablePie\VariablePieSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Variwide\VariwideComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Variwide\VariwidePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Variwide\VariwideSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Vector\VectorSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Venn\VennPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Venn\VennSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Venn\VennUtils.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Waterfall\WaterfallPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Waterfall\WaterfallSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Windbarb\WindbarbPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Windbarb\WindbarbSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Wordcloud\WordcloudPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Wordcloud\WordcloudSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\Wordcloud\WordcloudUtils.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\XRange\XRangeComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\XRange\XRangePoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Series\XRange\XRangeSeries.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\ABands\ABandsIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\AD\ADIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\AO\AOIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\APO\APOIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\AroonOscillator\AroonOscillatorIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\Aroon\AroonIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\ATR\ATRIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\BB\BBIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\CCI\CCIIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\Chaikin\ChaikinIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\CMF\CMFIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\CMO\CMOIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\DEMA\DEMAIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\DisparityIndex\DisparityIndexIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\DMI\DMIIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\DPO\DPOIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\EMA\EMAIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\IKH\IKHIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\KeltnerChannels\KeltnerChannelsIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\Klinger\KlingerIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\LinearRegressionAngle\LinearRegressionAngle.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\LinearRegressionIntercept\LinearRegressionIntercept.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\LinearRegressionSlopes\LinearRegressionSlopes.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\LinearRegression\LinearRegression.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\MACD\MACDIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\MFI\MFIIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\Momentum\MomentumIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\NATR\NATRIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\OBV\OBVIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\PC\PCIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\PivotPoints\PivotPointsIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\PivotPoints\PivotPointsPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\PPO\PPOIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\PriceEnvelopes\PriceEnvelopesIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\PSAR\PSARIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\ROC\ROCIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\RSI\RSIIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\SlowStochastic\SlowStochasticIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\SMA\SMAComposition.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\SMA\SMAIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\Stochastic\StochasticIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\Supertrend\SupertrendIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\TEMA\TEMAIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\TrendLine\TrendLineIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\TRIX\TRIXIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\VBP\VBPIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\VBP\VBPPoint.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\VWAP\VWAPIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\WilliamsR\WilliamsRIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\WMA\WMAIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\Indicators\Zigzag\ZigzagIndicator.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\StockToolsBindings.js" />
+    <None Include="wwwroot\highcharts\es-modules\Stock\StockToolsGui.js" />
+    <None Include="wwwroot\highcharts\highcharts-3d.js" />
+    <None Include="wwwroot\highcharts\highcharts-3d.src.js" />
+    <None Include="wwwroot\highcharts\highcharts-more.js" />
+    <None Include="wwwroot\highcharts\highcharts-more.src.js" />
+    <None Include="wwwroot\highcharts\highcharts.js" />
+    <None Include="wwwroot\highcharts\highcharts.src.js" />
+    <None Include="wwwroot\highcharts\lib\canvg.js" />
+    <None Include="wwwroot\highcharts\lib\jspdf.js" />
+    <None Include="wwwroot\highcharts\lib\jspdf.src.js" />
+    <None Include="wwwroot\highcharts\lib\svg2pdf.js" />
+    <None Include="wwwroot\highcharts\lib\svg2pdf.src.js" />
+    <None Include="wwwroot\highcharts\modules\accessibility.js" />
+    <None Include="wwwroot\highcharts\modules\accessibility.src.js" />
+    <None Include="wwwroot\highcharts\modules\annotations-advanced.js" />
+    <None Include="wwwroot\highcharts\modules\annotations-advanced.src.js" />
+    <None Include="wwwroot\highcharts\modules\annotations.js" />
+    <None Include="wwwroot\highcharts\modules\annotations.src.js" />
+    <None Include="wwwroot\highcharts\modules\arrow-symbols.js" />
+    <None Include="wwwroot\highcharts\modules\arrow-symbols.src.js" />
+    <None Include="wwwroot\highcharts\modules\boost-canvas.js" />
+    <None Include="wwwroot\highcharts\modules\boost-canvas.src.js" />
+    <None Include="wwwroot\highcharts\modules\boost.js" />
+    <None Include="wwwroot\highcharts\modules\boost.src.js" />
+    <None Include="wwwroot\highcharts\modules\broken-axis.js" />
+    <None Include="wwwroot\highcharts\modules\broken-axis.src.js" />
+    <None Include="wwwroot\highcharts\modules\bullet.js" />
+    <None Include="wwwroot\highcharts\modules\bullet.src.js" />
+    <None Include="wwwroot\highcharts\modules\coloraxis.js" />
+    <None Include="wwwroot\highcharts\modules\coloraxis.src.js" />
+    <None Include="wwwroot\highcharts\modules\current-date-indicator.js" />
+    <None Include="wwwroot\highcharts\modules\current-date-indicator.src.js" />
+    <None Include="wwwroot\highcharts\modules\cylinder.js" />
+    <None Include="wwwroot\highcharts\modules\cylinder.src.js" />
+    <None Include="wwwroot\highcharts\modules\data.js" />
+    <None Include="wwwroot\highcharts\modules\data.src.js" />
+    <None Include="wwwroot\highcharts\modules\datagrouping.js" />
+    <None Include="wwwroot\highcharts\modules\datagrouping.src.js" />
+    <None Include="wwwroot\highcharts\modules\debugger.js" />
+    <None Include="wwwroot\highcharts\modules\debugger.src.js" />
+    <None Include="wwwroot\highcharts\modules\dependency-wheel.js" />
+    <None Include="wwwroot\highcharts\modules\dependency-wheel.src.js" />
+    <None Include="wwwroot\highcharts\modules\dotplot.js" />
+    <None Include="wwwroot\highcharts\modules\dotplot.src.js" />
+    <None Include="wwwroot\highcharts\modules\drag-panes.js" />
+    <None Include="wwwroot\highcharts\modules\drag-panes.src.js" />
+    <None Include="wwwroot\highcharts\modules\draggable-points.js" />
+    <None Include="wwwroot\highcharts\modules\draggable-points.src.js" />
+    <None Include="wwwroot\highcharts\modules\drilldown.js" />
+    <None Include="wwwroot\highcharts\modules\drilldown.src.js" />
+    <None Include="wwwroot\highcharts\modules\dumbbell.js" />
+    <None Include="wwwroot\highcharts\modules\dumbbell.src.js" />
+    <None Include="wwwroot\highcharts\modules\export-data.js" />
+    <None Include="wwwroot\highcharts\modules\export-data.src.js" />
+    <None Include="wwwroot\highcharts\modules\exporting.js" />
+    <None Include="wwwroot\highcharts\modules\exporting.src.js" />
+    <None Include="wwwroot\highcharts\modules\full-screen.js" />
+    <None Include="wwwroot\highcharts\modules\full-screen.src.js" />
+    <None Include="wwwroot\highcharts\modules\funnel.js" />
+    <None Include="wwwroot\highcharts\modules\funnel.src.js" />
+    <None Include="wwwroot\highcharts\modules\funnel3d.js" />
+    <None Include="wwwroot\highcharts\modules\funnel3d.src.js" />
+    <None Include="wwwroot\highcharts\modules\gantt.js" />
+    <None Include="wwwroot\highcharts\modules\gantt.src.js" />
+    <None Include="wwwroot\highcharts\modules\grid-axis.js" />
+    <None Include="wwwroot\highcharts\modules\grid-axis.src.js" />
+    <None Include="wwwroot\highcharts\modules\heatmap.js" />
+    <None Include="wwwroot\highcharts\modules\heatmap.src.js" />
+    <None Include="wwwroot\highcharts\modules\heikinashi.js" />
+    <None Include="wwwroot\highcharts\modules\heikinashi.src.js" />
+    <None Include="wwwroot\highcharts\modules\histogram-bellcurve.js" />
+    <None Include="wwwroot\highcharts\modules\histogram-bellcurve.src.js" />
+    <None Include="wwwroot\highcharts\modules\hollowcandlestick.js" />
+    <None Include="wwwroot\highcharts\modules\hollowcandlestick.src.js" />
+    <None Include="wwwroot\highcharts\modules\item-series.js" />
+    <None Include="wwwroot\highcharts\modules\item-series.src.js" />
+    <None Include="wwwroot\highcharts\modules\lollipop.js" />
+    <None Include="wwwroot\highcharts\modules\lollipop.src.js" />
+    <None Include="wwwroot\highcharts\modules\marker-clusters.js" />
+    <None Include="wwwroot\highcharts\modules\marker-clusters.src.js" />
+    <None Include="wwwroot\highcharts\modules\networkgraph.js" />
+    <None Include="wwwroot\highcharts\modules\networkgraph.src.js" />
+    <None Include="wwwroot\highcharts\modules\no-data-to-display.js" />
+    <None Include="wwwroot\highcharts\modules\no-data-to-display.src.js" />
+    <None Include="wwwroot\highcharts\modules\offline-exporting.js" />
+    <None Include="wwwroot\highcharts\modules\offline-exporting.src.js" />
+    <None Include="wwwroot\highcharts\modules\oldie-polyfills.js" />
+    <None Include="wwwroot\highcharts\modules\oldie-polyfills.src.js" />
+    <None Include="wwwroot\highcharts\modules\oldie.js" />
+    <None Include="wwwroot\highcharts\modules\oldie.src.js" />
+    <None Include="wwwroot\highcharts\modules\organization.js" />
+    <None Include="wwwroot\highcharts\modules\organization.src.js" />
+    <None Include="wwwroot\highcharts\modules\overlapping-datalabels.js" />
+    <None Include="wwwroot\highcharts\modules\overlapping-datalabels.src.js" />
+    <None Include="wwwroot\highcharts\modules\parallel-coordinates.js" />
+    <None Include="wwwroot\highcharts\modules\parallel-coordinates.src.js" />
+    <None Include="wwwroot\highcharts\modules\pareto.js" />
+    <None Include="wwwroot\highcharts\modules\pareto.src.js" />
+    <None Include="wwwroot\highcharts\modules\pathfinder.js" />
+    <None Include="wwwroot\highcharts\modules\pathfinder.src.js" />
+    <None Include="wwwroot\highcharts\modules\pattern-fill.js" />
+    <None Include="wwwroot\highcharts\modules\pattern-fill.src.js" />
+    <None Include="wwwroot\highcharts\modules\price-indicator.js" />
+    <None Include="wwwroot\highcharts\modules\price-indicator.src.js" />
+    <None Include="wwwroot\highcharts\modules\pyramid3d.js" />
+    <None Include="wwwroot\highcharts\modules\pyramid3d.src.js" />
+    <None Include="wwwroot\highcharts\modules\sankey.js" />
+    <None Include="wwwroot\highcharts\modules\sankey.src.js" />
+    <None Include="wwwroot\highcharts\modules\series-label.js" />
+    <None Include="wwwroot\highcharts\modules\series-label.src.js" />
+    <None Include="wwwroot\highcharts\modules\solid-gauge.js" />
+    <None Include="wwwroot\highcharts\modules\solid-gauge.src.js" />
+    <None Include="wwwroot\highcharts\modules\sonification.js" />
+    <None Include="wwwroot\highcharts\modules\sonification.src.js" />
+    <None Include="wwwroot\highcharts\modules\static-scale.js" />
+    <None Include="wwwroot\highcharts\modules\static-scale.src.js" />
+    <None Include="wwwroot\highcharts\modules\stock-tools.js" />
+    <None Include="wwwroot\highcharts\modules\stock-tools.src.js" />
+    <None Include="wwwroot\highcharts\modules\stock.js" />
+    <None Include="wwwroot\highcharts\modules\stock.src.js" />
+    <None Include="wwwroot\highcharts\modules\streamgraph.js" />
+    <None Include="wwwroot\highcharts\modules\streamgraph.src.js" />
+    <None Include="wwwroot\highcharts\modules\sunburst.js" />
+    <None Include="wwwroot\highcharts\modules\sunburst.src.js" />
+    <None Include="wwwroot\highcharts\modules\tilemap.js" />
+    <None Include="wwwroot\highcharts\modules\tilemap.src.js" />
+    <None Include="wwwroot\highcharts\modules\timeline.js" />
+    <None Include="wwwroot\highcharts\modules\timeline.src.js" />
+    <None Include="wwwroot\highcharts\modules\treegrid.js" />
+    <None Include="wwwroot\highcharts\modules\treegrid.src.js" />
+    <None Include="wwwroot\highcharts\modules\treemap.js" />
+    <None Include="wwwroot\highcharts\modules\treemap.src.js" />
+    <None Include="wwwroot\highcharts\modules\variable-pie.js" />
+    <None Include="wwwroot\highcharts\modules\variable-pie.src.js" />
+    <None Include="wwwroot\highcharts\modules\variwide.js" />
+    <None Include="wwwroot\highcharts\modules\variwide.src.js" />
+    <None Include="wwwroot\highcharts\modules\vector.js" />
+    <None Include="wwwroot\highcharts\modules\vector.src.js" />
+    <None Include="wwwroot\highcharts\modules\venn.js" />
+    <None Include="wwwroot\highcharts\modules\venn.src.js" />
+    <None Include="wwwroot\highcharts\modules\windbarb.js" />
+    <None Include="wwwroot\highcharts\modules\windbarb.src.js" />
+    <None Include="wwwroot\highcharts\modules\wordcloud.js" />
+    <None Include="wwwroot\highcharts\modules\wordcloud.src.js" />
+    <None Include="wwwroot\highcharts\modules\xrange.js" />
+    <None Include="wwwroot\highcharts\modules\xrange.src.js" />
+    <None Include="wwwroot\highcharts\themes\avocado.js" />
+    <None Include="wwwroot\highcharts\themes\avocado.src.js" />
+    <None Include="wwwroot\highcharts\themes\dark-blue.js" />
+    <None Include="wwwroot\highcharts\themes\dark-blue.src.js" />
+    <None Include="wwwroot\highcharts\themes\dark-green.js" />
+    <None Include="wwwroot\highcharts\themes\dark-green.src.js" />
+    <None Include="wwwroot\highcharts\themes\dark-unica.js" />
+    <None Include="wwwroot\highcharts\themes\dark-unica.src.js" />
+    <None Include="wwwroot\highcharts\themes\gray.js" />
+    <None Include="wwwroot\highcharts\themes\gray.src.js" />
+    <None Include="wwwroot\highcharts\themes\grid-light.js" />
+    <None Include="wwwroot\highcharts\themes\grid-light.src.js" />
+    <None Include="wwwroot\highcharts\themes\grid.js" />
+    <None Include="wwwroot\highcharts\themes\grid.src.js" />
+    <None Include="wwwroot\highcharts\themes\high-contrast-dark.js" />
+    <None Include="wwwroot\highcharts\themes\high-contrast-dark.src.js" />
+    <None Include="wwwroot\highcharts\themes\high-contrast-light.js" />
+    <None Include="wwwroot\highcharts\themes\high-contrast-light.src.js" />
+    <None Include="wwwroot\highcharts\themes\sand-signika.js" />
+    <None Include="wwwroot\highcharts\themes\sand-signika.src.js" />
+    <None Include="wwwroot\highcharts\themes\skies.js" />
+    <None Include="wwwroot\highcharts\themes\skies.src.js" />
+    <None Include="wwwroot\highcharts\themes\sunset.js" />
+    <None Include="wwwroot\highcharts\themes\sunset.src.js" />
+    <None Include="wwwroot\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\images\logo.psd" />
+    <None Include="wwwroot\images\pic.psd" />
+    <None Include="wwwroot\js\bmap\bmap.js" />
+    <None Include="wwwroot\js\bmap\BMapCoordSys.js" />
+    <None Include="wwwroot\js\bmap\BMapModel.js" />
+    <None Include="wwwroot\js\bmap\BMapView.js" />
+    <None Include="wwwroot\js\bmap\china.js" />
+    <None Include="wwwroot\js\bmap\echarts.js" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\common.js" />
+    <None Include="wwwroot\js\common1.js" />
+    <None Include="wwwroot\js\echarts.js" />
+    <None Include="wwwroot\js\entry.js" />
+    <None Include="wwwroot\js\event.js" />
+    <None Include="wwwroot\js\index.js" />
+    <None Include="wwwroot\js\jquery-1.8.0.min.js" />
+    <None Include="wwwroot\js\jquery.bxslider.min.js" />
+    <None Include="wwwroot\js\jquery.cookie.js" />
+    <None Include="wwwroot\js\jquery.easing.1.3.js" />
+    <None Include="wwwroot\js\jquery.flexslider-min.js" />
+    <None Include="wwwroot\js\jquery.min.js" />
+    <None Include="wwwroot\js\jquery.SuperSlide.2.1.1.js" />
+    <None Include="wwwroot\js\jquery.SuperSlide.js" />
+    <None Include="wwwroot\js\jquerycron\jquery-cron.js" />
+    <None Include="wwwroot\js\jquerycron\jquery-gentleSelect-min.js" />
+    <None Include="wwwroot\js\jsmodern.min.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\menu.js" />
+    <None Include="wwwroot\js\plugins\jquery.form.js" />
+    <None Include="wwwroot\js\plugins\jquery.serializejson.min.js" />
+    <None Include="wwwroot\js\plugins\jquery.validate.min.js" />
+    <None Include="wwwroot\js\plugins\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\js\plugins\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\js\plugins\messages_zh.js" />
+    <None Include="wwwroot\js\resource\iconfont.svg" />
+    <None Include="wwwroot\js\resource\iconfont.woff2" />
+    <None Include="wwwroot\js\search.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\site.min.js" />
+    <None Include="wwwroot\js\toggle.js" />
+    <None Include="wwwroot\js\tween.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\attachment\attachment.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\background\background.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\charts\chart.config.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\charts\charts.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\emotion\emotion.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\help\help.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\image\image.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\internal.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\music\music.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\scrawl\scrawl.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\searchreplace\searchreplace.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\spechars\spechars.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\table\edittable.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\template\config.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\template\template.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\video\video.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <None Include="wwwroot\js\ueditor\dialogs\wordimage\imageUploader.swf" />
+    <None Include="wwwroot\js\ueditor\dialogs\wordimage\tangram.js" />
+    <None Include="wwwroot\js\ueditor\dialogs\wordimage\wordimage.js" />
+    <None Include="wwwroot\js\ueditor\editor_api.js" />
+    <None Include="wwwroot\js\ueditor\lang\en\en.js" />
+    <None Include="wwwroot\js\ueditor\lang\zh-cn\zh-cn.js" />
+    <None Include="wwwroot\js\ueditor\third-party\codemirror\codemirror.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\adapters\mootools-adapter.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\adapters\prototype-adapter.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\adapters\standalone-framework.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\highcharts-more.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\highcharts-more.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\highcharts.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\highcharts.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\annotations.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\annotations.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\canvas-tools.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\canvas-tools.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\data.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\data.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\drilldown.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\drilldown.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\exporting.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\exporting.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\funnel.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\funnel.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\heatmap.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\heatmap.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\map.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\map.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\no-data-to-display.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\themes\dark-blue.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\themes\dark-green.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\themes\gray.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\themes\grid.js" />
+    <None Include="wwwroot\js\ueditor\third-party\highcharts\themes\skies.js" />
+    <None Include="wwwroot\js\ueditor\third-party\jquery-1.10.2.js" />
+    <None Include="wwwroot\js\ueditor\third-party\jquery-1.10.2.min.js" />
+    <None Include="wwwroot\js\ueditor\third-party\jquery-1.10.2.min.map" />
+    <None Include="wwwroot\js\ueditor\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <None Include="wwwroot\js\ueditor\third-party\SyntaxHighlighter\shCore.js" />
+    <None Include="wwwroot\js\ueditor\third-party\video-js\font\vjs.svg" />
+    <None Include="wwwroot\js\ueditor\third-party\video-js\video-js.swf" />
+    <None Include="wwwroot\js\ueditor\third-party\video-js\video.dev.js" />
+    <None Include="wwwroot\js\ueditor\third-party\video-js\video.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\Uploader.swf" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.custom.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.custom.min.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.flashonly.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.flashonly.min.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.html5only.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.html5only.min.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.min.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.withoutimage.js" />
+    <None Include="wwwroot\js\ueditor\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <None Include="wwwroot\js\ueditor\third-party\zeroclipboard\ZeroClipboard.js" />
+    <None Include="wwwroot\js\ueditor\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <None Include="wwwroot\js\ueditor\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <None Include="wwwroot\js\ueditor\ueditor.config.js" />
+    <None Include="wwwroot\js\ueditor\ueditor.parse.js" />
+    <None Include="wwwroot\js\ueditor\_src\adapter\autosave.js" />
+    <None Include="wwwroot\js\ueditor\_src\adapter\editor.js" />
+    <None Include="wwwroot\js\ueditor\_src\adapter\editorui.js" />
+    <None Include="wwwroot\js\ueditor\_src\adapter\message.js" />
+    <None Include="wwwroot\js\ueditor\_src\api.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\ajax.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\browser.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\domUtils.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\dtd.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\Editor.defaultoptions.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\Editor.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\EventBase.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\filternode.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\filterword.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\htmlparser.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\keymap.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\loadconfig.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\localstorage.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\node.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\plugin.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\Range.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\Selection.js" />
+    <None Include="wwwroot\js\ueditor\_src\core\utils.js" />
+    <None Include="wwwroot\js\ueditor\_src\editor.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\anchor.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\autofloat.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\autoheight.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\autolink.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\autosave.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\autosubmit.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\autotypeset.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\autoupload.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\background.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\basestyle.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\blockquote.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\catchremoteimage.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\charts.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\cleardoc.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\contextmenu.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\convertcase.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\copy.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\customstyle.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\defaultfilter.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\directionality.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\dragdrop.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\elementpath.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\enterkey.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\fiximgclick.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\font.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\formatmatch.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\horizontal.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\iframe.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\image.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\indent.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\insertcode.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\insertfile.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\inserthtml.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\insertparagraph.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\justify.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\keystrokes.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\lineheight.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\link.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\list.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\music.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\pagebreak.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\paragraph.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\paste.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\preview.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\print.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\puretxtpaste.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\removeformat.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\rowspacing.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\scrawl.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\searchreplace.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\section.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\selectall.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\serverparam.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\shortcutmenu.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\simpleupload.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\snapscreen.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\source.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\table.action.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\table.cmds.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\table.core.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\table.sort.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\template.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\time.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\undo.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\video.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\webapp.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\wordcount.js" />
+    <None Include="wwwroot\js\ueditor\_src\plugins\wordimage.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\autotypesetbutton.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\autotypesetpicker.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\breakline.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\button.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\cellalignpicker.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\colorbutton.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\colorpicker.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\combox.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\dialog.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\mask.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\menu.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\menubutton.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\message.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\multiMenu.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\pastepicker.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\popup.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\separator.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\shortcutmenu.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\splitbutton.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\stateful.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\tablebutton.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\tablepicker.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\toolbar.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\ui.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\uibase.js" />
+    <None Include="wwwroot\js\ueditor\_src\ui\uiutils.js" />
+    <None Include="wwwroot\js\xdate.js" />
+    <None Include="wwwroot\layui\css\modules\dtree\font\dtreefont.svg" />
+    <None Include="wwwroot\layui\font\iconfont.svg" />
+    <None Include="wwwroot\layui\font\iconfont.woff2" />
+    <None Include="wwwroot\layui\layui_exts\excel\excel.js" />
+    <None Include="wwwroot\layui\layui_exts\excel\excel.js.map" />
+    <None Include="wwwroot\layui\lay\map\china-contour.js" />
+    <None Include="wwwroot\layui\lay\map\china.js" />
+    <None Include="wwwroot\layui\lay\map\province\anhui.js" />
+    <None Include="wwwroot\layui\lay\map\province\aomen.js" />
+    <None Include="wwwroot\layui\lay\map\province\beijing.js" />
+    <None Include="wwwroot\layui\lay\map\province\chongqing.js" />
+    <None Include="wwwroot\layui\lay\map\province\fujian.js" />
+    <None Include="wwwroot\layui\lay\map\province\gansu.js" />
+    <None Include="wwwroot\layui\lay\map\province\guangdong.js" />
+    <None Include="wwwroot\layui\lay\map\province\guangxi.js" />
+    <None Include="wwwroot\layui\lay\map\province\guizhou.js" />
+    <None Include="wwwroot\layui\lay\map\province\hainan.js" />
+    <None Include="wwwroot\layui\lay\map\province\hebei.js" />
+    <None Include="wwwroot\layui\lay\map\province\heilongjiang.js" />
+    <None Include="wwwroot\layui\lay\map\province\henan.js" />
+    <None Include="wwwroot\layui\lay\map\province\hubei.js" />
+    <None Include="wwwroot\layui\lay\map\province\hunan.js" />
+    <None Include="wwwroot\layui\lay\map\province\jiangsu.js" />
+    <None Include="wwwroot\layui\lay\map\province\jiangxi.js" />
+    <None Include="wwwroot\layui\lay\map\province\jilin.js" />
+    <None Include="wwwroot\layui\lay\map\province\liaoning.js" />
+    <None Include="wwwroot\layui\lay\map\province\neimenggu.js" />
+    <None Include="wwwroot\layui\lay\map\province\ningxia.js" />
+    <None Include="wwwroot\layui\lay\map\province\qinghai.js" />
+    <None Include="wwwroot\layui\lay\map\province\shandong.js" />
+    <None Include="wwwroot\layui\lay\map\province\shanghai.js" />
+    <None Include="wwwroot\layui\lay\map\province\shanxi.js" />
+    <None Include="wwwroot\layui\lay\map\province\shanxi1.js" />
+    <None Include="wwwroot\layui\lay\map\province\sichuan.js" />
+    <None Include="wwwroot\layui\lay\map\province\taiwan.js" />
+    <None Include="wwwroot\layui\lay\map\province\tianjin.js" />
+    <None Include="wwwroot\layui\lay\map\province\xianggang.js" />
+    <None Include="wwwroot\layui\lay\map\province\xinjiang.js" />
+    <None Include="wwwroot\layui\lay\map\province\xizang.js" />
+    <None Include="wwwroot\layui\lay\map\province\yunnan.js" />
+    <None Include="wwwroot\layui\lay\map\province\zhejiang.js" />
+    <None Include="wwwroot\layui\lay\map\world.js" />
+    <None Include="wwwroot\layui\lay\modules\autocomplete.js" />
+    <None Include="wwwroot\layui\lay\modules\carousel.js" />
+    <None Include="wwwroot\layui\lay\modules\code.js" />
+    <None Include="wwwroot\layui\lay\modules\colorpicker.js" />
+    <None Include="wwwroot\layui\lay\modules\config.js" />
+    <None Include="wwwroot\layui\lay\modules\dtree.js" />
+    <None Include="wwwroot\layui\lay\modules\echartsTheme.js" />
+    <None Include="wwwroot\layui\lay\modules\element.js" />
+    <None Include="wwwroot\layui\lay\modules\flow.js" />
+    <None Include="wwwroot\layui\lay\modules\form.js" />
+    <None Include="wwwroot\layui\lay\modules\index.js" />
+    <None Include="wwwroot\layui\lay\modules\inputTags.js" />
+    <None Include="wwwroot\layui\lay\modules\jquery.js" />
+    <None Include="wwwroot\layui\lay\modules\laydate.js" />
+    <None Include="wwwroot\layui\lay\modules\layedit.js" />
+    <None Include="wwwroot\layui\lay\modules\layer.js" />
+    <None Include="wwwroot\layui\lay\modules\laypage.js" />
+    <None Include="wwwroot\layui\lay\modules\laytpl.js" />
+    <None Include="wwwroot\layui\lay\modules\lib\admin.js" />
+    <None Include="wwwroot\layui\lay\modules\lib\common.js" />
+    <None Include="wwwroot\layui\lay\modules\lib\console.js" />
+    <None Include="wwwroot\layui\lay\modules\lib\view.js" />
+    <None Include="wwwroot\layui\lay\modules\mobile.js" />
+    <None Include="wwwroot\layui\lay\modules\rate.js" />
+    <None Include="wwwroot\layui\lay\modules\slider.js" />
+    <None Include="wwwroot\layui\lay\modules\table.js" />
+    <None Include="wwwroot\layui\lay\modules\tableFilter.js" />
+    <None Include="wwwroot\layui\lay\modules\tableSelect.js" />
+    <None Include="wwwroot\layui\lay\modules\transfer.js" />
+    <None Include="wwwroot\layui\lay\modules\tree.js" />
+    <None Include="wwwroot\layui\lay\modules\upload.js" />
+    <None Include="wwwroot\layui\lay\modules\util.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Hangfire.Core" Version="1.6.23" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.6.23" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="2.1.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore" Version="2.1.9" />
+    <PackageReference Include="MiniWord" Version="0.6.1" />
+    <PackageReference Include="ResXResourceReader.NetStandard" Version="1.1.0" />
+    <PackageReference Include="Senparc.Weixin.MP.MVC" Version="7.1.13" />
+    <PackageReference Include="SharpZipLib" Version="1.1.0" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.1" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.4.0" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.1" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.11" />
+    <PackageReference Include="StringTemplate4" Version="4.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.23" />
+    <PackageReference Include="Senparc.Weixin" Version="6.2.1" />
+    <PackageReference Include="Senparc.Weixin.MP" Version="16.5.2.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
+    <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0" />
+    <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+    <PackageReference Include="UEditorForNetCore2" Version="1.0.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="7.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Aspose.Words">
+      <HintPath>Extensions\Aspose.Words.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\ANNO_FILE\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ANNO_FILE\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ANNO_PROJECT\Viewpro.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ANNO_REPORT\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_DISEASE\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_DISEASE\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_DISEASE\Select.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CLINICAL_SAMPLE\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CLINICAL_SAMPLE\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CLINICAL_SAMPLE\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CLINICAL_SAMPLE\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CLINICAL_SAMPLE\Select.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_FUSION\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_FUSION\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_FUSION\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_ASSAY\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_ASSAY\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_ASSAY\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_ASSAY\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CNA_HG\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CNA_HG\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CNA_HG\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_CNA_HG\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_PATIENT\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_PATIENT\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_PATIENT\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_PATIENT\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_DRUG\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_DRUG\Select.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_PATIENT\Select.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_RELATION\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\BUS_RELATION\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\BUS_RELATION\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\BUS_TARGET\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_TARGET\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\BUS_TARGET\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\Disease.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\All.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\Targets.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\PF_STATE\Create.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\PF_STATE\Delete.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\PF_STATE\Details.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\PF_STATE\Edit.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\PF_STATE\Index.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Website\ad.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="wwwroot\js\resource\logo-min.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\js\resource\logo.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NETCore.App" Version="2.1.9" />
+  </ItemGroup>
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties appsettings_1Development_1json__JSONSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,19 @@
+﻿@using Main.Extensions
+@using Main.ViewModels;
+@model VM_CMS_AD
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>详细信息</title>
+</head>
+<body style="padding:5px 5px 5px 5px;">
+    <div>
+        <dl class="dl-horizontal">
+            <dd>
+                @Html.Raw(Model.ADTEXT)
+            </dd>
+        </dl>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿@using Main.Extensions
+@using Main.ViewModels;
+@model VM_CMS_LINK
+<div class="layui-card" style="margin-bottom:0">
+    <div class="layui-card-header">新建</div>
+    <div class="layui-card-body">
+        <form action='@Url.Action("Create", "API_CMS_LINK")' method="post" class="layui-form layui-form-pane" lay-filter="mainform" id="mainform">
+            @Html.AntiForgeryToken()
+            <div class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-md3 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="LINKTYPE" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="LINKTYPE" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="LINKTEXT" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="LINKTEXT" class="layui-input" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="LINKXH" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="LINKXH" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="ISPUB" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="ISPUB" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="LINKURL" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="LINKURL" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="INDEXPIC" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="INDEXPIC" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="PRECSS" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="PRECSS" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="BZ" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="BZ" class="layui-input" />
+                                <input asp-for="OPERATOR" class="layui-input" style="display:none;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="layui-container">
+                <div class="layui-row">
+                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" style="padding:0 5px">
+                        <a class="layui-btn layui-btn-warm layui-btn-fluid" id="submit">
+                            新建
+                        </a>
+                    </div>
+                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" style="padding:0 5px">
+                        <button class="layui-btn layui-btn-normal layui-btn-fluid" id="reset">
+                            清空
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use(['form', 'layer', 'table'], function () {
+        var form = layui.form, layer = layui.layer, table = layui.table;
+        form.render();
+        $("#reset").click(function () {
+            $("#mainform input").not("button,submit, reset, hidden").val("").removeAttr("checked").remove("selected");
+        });
+        $("#submit").click(function () {
+            if ($("#mainform").valid()) {
+                $("#mainform").ajaxSubmit({
+                    success: function (d) {
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layui.table.reload('table');
+                        parent.layer.close(index);
+                    },
+                    error: function (d) {
+                        layer.alert(d.responseJSON.msg);
+                    }
+                });
+            }
+        });
+    });
+</script>

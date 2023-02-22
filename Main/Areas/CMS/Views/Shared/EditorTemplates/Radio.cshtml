@@ -1,0 +1,12 @@
+﻿@using TDSCoreLib
+@{
+
+    var list = (List<TDS_State>)ViewData["list"];
+
+}
+    @foreach (var item in list)
+    {
+        var radioId = item.CODE;
+        <input type="radio" id="@radioId" name="@ViewData.TemplateInfo.HtmlFieldPrefix" title="@item.NAME" value="@item.CODE" />
+
+    }

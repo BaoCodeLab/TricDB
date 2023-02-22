@@ -1,0 +1,255 @@
+﻿@using Main.ViewModels;
+@using TDSCoreLib;
+@model VM_CMS_CHANNEL
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">栏目管理</div>
+        <div class="layui-card-body">
+            <div class="layui-row">
+                <div class="layui-col-xs12 layui-col-sm12 layui-col-md2">
+                    <ul id="tree_dir"></ul>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm12 layui-col-md10">
+                    @*<div id="tip_dir" style="margin-bottom:20px">
+                            根目录
+                        </div>*@
+                    <div class="layui-row">
+                        <button class="layui-btn layui-btn-sm layui-btn-warm" data-type="refresh">
+                            <i class="layui-icon layui-icon-refresh"></i>刷新
+                        </button>
+                        <button class="layui-btn layui-btn-sm layui-bg-blue" data-type="create">
+                            <i class="layui-icon layui-icon-add-circle"></i>新建
+                        </button>
+                        <button class="layui-btn layui-btn-sm layui-bg-green" data-type="edit">
+                            <i class="layui-icon layui-icon-edit"></i>编辑
+                        </button>
+                        <button class="layui-btn layui-btn-sm layui-bg-red" data-type="del">
+                            <i class="layui-icon layui-icon-delete"></i>删除
+                        </button>
+                        <button class="layui-btn layui-btn-sm layui-bg-gray" data-type="up">
+                            <i class="layui-icon layui-icon-up"></i>上移
+                        </button>
+                        <button class="layui-btn layui-btn-sm layui-bg-gray" data-type="down">
+                            <i class="layui-icon layui-icon-down"></i>下移
+                        </button>
+                        <table class="layui-table" id="table" lay-filter="filter"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="laypl_cdlx">
+    {{#  if(d.CHANNELREDIRECT == ""){ }}
+    <p style="color:red">站内栏目</p>
+    {{#  }else{ }}
+    <p style="color:dodgerblue">跳转栏目</p>
+    {{#  } }}
+
+</script>
+<script type="text/html" id="toolbarDemo">
+</script>
+<script type="text/javascript">
+    layui.use(['laytpl', 'laypage', 'table', 'form', 'layer', 'tree'], function () {
+        var table = layui.table, laytpl = layui.laytpl, form = layui.form, layer = layui.layer, tree = layui.tree;
+        var currentNode = "root";
+        var currentCheck = null;
+        table.render({
+            toolbar:'#toolbarDemo',
+            elem: '#table',
+            page: { limit: 10, theme: '1E9FFF' },
+            size:'sm',
+            height:'full-160',
+            id: 'menuTable',
+            url: '@Url.Action("Get", "API_CMS_CHANNEL")',
+            loading: true,
+            cols: [[ //标题栏
+                { checkbox: true },
+                { field: 'CHANNELXH', title: '排序值' },
+                { field: 'CHANNELNAME', title: '菜单标题' },
+                { field: 'ISMENU', title: '菜单显示' },
+                { field: 'ISPUB', title: '是否发布' },
+                { field: 'CHANNELREDIRECT', title: '菜单类型', templet: '#laypl_cdlx' },
+                { field: 'CREATE_DATE', title: '创建时间' },
+                { field: 'OPERATOR', title: '创建人' }
+            ]],
+            done: function (res, curr, count) {
+                for (var i = 0; i < res.data.length; i++) {
+                    if (res.data[i]["CHANNELID"] == currentCheck) {
+                        res.data[i]["LAY_CHECKED"] = 'true';
+                        var index = res.data[i]['LAY_TABLE_INDEX'];
+                        $('.layui-table tr[data-index=' + index + '] input[type="checkbox"]').prop('checked', true);
+                        $('.layui-table tr[data-index=' + index + '] input[type="checkbox"]').next().addClass('layui-form-checked');
+                    }
+                }
+                //设置全选checkbox的选中状态，只有改变LAY_CHECKED的值， table.checkStatus才能抓取到选中的状态
+                var checkStatus = table.checkStatus('CHANNELID');
+                if (checkStatus.isAll) {
+                    $(' .layui-table-header th[data-field="0"] input[type="checkbox"]').prop('checked', true);
+                    $('.layui-table-header th[data-field="0"] input[type="checkbox"]').next().addClass('layui-form-checked');
+                }
+            }
+        });
+
+        table.on('sort(filter)', function (obj) {
+            table.reload('table', {
+                initSort: obj
+                , where: {
+                    field: obj.field
+                    , order: obj.type
+                }
+            });
+        });
+        $.get('@Url.Action("GetDirs", "API_CMS_CHANNEL")', {}, function (data) {
+            var orgTree = tree.render({
+                elem: '#tree_dir'
+                , id: 'menuTree'
+                , onlyIconControl:true
+                , data: data.data
+                , click: function (node) {
+                    table.reload('menuTable', { where: { searchfield: 'PARENTCHANNELID', searchword: node.data.id } });
+                    currentNode = node.data.id;
+                    currentCheck = null;
+                    $('#tip_dir').text(node.name);
+                }
+            });
+        });
+        //页面其他按钮事件
+        var active = {
+            //新建
+            create: function () {
+                layer.open({
+                    type: 2,
+                    area: ['90%', '90%'],
+                    offset: '10px',
+                    content: '@Url.Action("Create", "CMS_CHANNEL")?PARENTCHANNELID=' + currentNode,
+                    end: function () {
+                        table.reload('menuTable');
+                        $.get('@Url.Action("GetDirs", "API_CMS_CHANNEL")', {}, function (data) {
+                            tree.reload('menuTree', {
+                                data: data.data
+                            });
+                        });
+                    }
+                });
+            }
+            //刷新
+            , refresh: function () {
+                //table.reload('CHANNELID', { where: { searchfield: null, searchword: null } });
+                table.reload('menuTable');
+                $.get('@Url.Action("GetDirs", "API_CMS_CHANNEL")', {}, function (data) {
+                    tree.reload('menuTree', {
+                        data: data.data
+                    });
+                });
+                currentCheck = null;
+            },
+            del: function () {
+                var checkStatus = table.checkStatus('menuTable'); //test即为基础参数id对应的值
+                if (checkStatus.data.length == 0) {
+                    layer.alert('请选择行项目');
+                    return;
+                }
+                var gids = [];
+                for (var i = 0; i < checkStatus.data.length ; i++) {
+                    gids[i] = checkStatus.data[i].CHANNELID;
+                }
+                layer.confirm('确认删除信息吗', function (index) {
+                    $.ajax({
+                        method: "Delete",
+                        url: '@Url.Action("bulkDelete", "API_CMS_CHANNEL")',
+                        traditional: true,
+                        data: { data: gids },
+                        success: function (data) {
+                            layer.close(index);
+                            //table.reload('menuTable', 'table');
+                            table.reload('menuTable');
+                            $.get('@Url.Action("GetDirs", "API_CMS_CHANNEL")', {}, function (data) {
+                                tree.reload('menuTree', {
+                                    data: data.data
+                                });
+                            });
+                            currentCheck = null;
+                        },
+                        error: function (data) {
+                            layer.alert(data.responseJSON.msg)
+                        }
+                    });
+                });
+            },
+            edit: function () {
+                var checkStatus = table.checkStatus('menuTable'); //test即为基础参数id对应的值
+                if (checkStatus.data.length != 1) {
+                    layer.alert('请选择一行项目');
+                    return;
+                }
+                layer.open({
+                    type: 2,
+                    area: ['90%', '90%'],
+                    offset: '10px',
+                    content: '@Url.Action("Edit", "CMS_CHANNEL")/' + checkStatus.data[0].CHANNELID,
+                    end: function () {
+                        table.reload('menuTable');
+                        $.get('@Url.Action("GetDirs", "API_CMS_CHANNEL")', {}, function (data) {
+                            tree.reload('menuTree', {
+                                data: data.data
+                            });
+                        });
+                    }
+                });
+            },
+            up: function () {
+                var checkStatus = table.checkStatus('menuTable'); //test即为基础参数id对应的值
+                if (checkStatus.data.length != 1) {
+                    layer.alert('请选择一行项目');
+                    return;
+                }
+                currentCheck = checkStatus.data[0].CHANNELID;
+                $.ajax({
+                    method: "Post",
+                    url: '@Url.Action("Up", "API_CMS_CHANNEL")?CHANNELID=' + checkStatus.data[0].CHANNELID,
+                    success: function (data) {
+                        table.reload('menuTable');
+                            $.get('@Url.Action("GetDirs", "API_CMS_CHANNEL")', {}, function (data) {
+                                tree.reload('menuTree', {
+                                    data: data.data
+                                });
+                            });
+                            currentCheck = null;
+                    },
+                    error: function (data) {
+                        layer.alert(data.responseJSON.msg)
+                    }
+                });
+            },
+            down: function () {
+                var checkStatus = table.checkStatus('menuTable'); //test即为基础参数id对应的值
+                if (checkStatus.data.length != 1) {
+                    layer.alert('请选择一行项目');
+                    return;
+                }
+                currentCheck = checkStatus.data[0].CHANNELID;
+                $.ajax({
+                    method: "Post",
+                    url: '@Url.Action("Down", "API_CMS_CHANNEL")?CHANNELID=' + checkStatus.data[0].CHANNELID,
+                    success: function (data) {
+                        table.reload('menuTable');
+                $.get('@Url.Action("GetDirs", "API_CMS_CHANNEL")', {}, function (data) {
+                    tree.reload('menuTree', {
+                        data: data.data
+                    });
+                });
+                currentCheck = null;
+                    },
+                    error: function (data) {
+                        layer.alert(data.responseJSON.msg)
+                    }
+                });
+            }
+        };
+        $('button[data-type]').click(function () {
+            var type = $(this).data('type');
+            active[type] && active[type].call(this);
+        });
+    });
+</script>

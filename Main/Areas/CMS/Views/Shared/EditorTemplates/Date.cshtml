@@ -1,0 +1,14 @@
+﻿@using TDSCoreLib
+@{ 
+    var range = ViewData["range"];
+}
+<input name="@ViewData.TemplateInfo.HtmlFieldPrefix" id="@ViewData.TemplateInfo.HtmlFieldPrefix"  lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" type="text" value="@ViewData.TemplateInfo.FormattedModelValue" >
+<script type="text/javascript">
+    layui.use(['laydate'], function () {
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#@ViewData.TemplateInfo.HtmlFieldPrefix',
+            range: @range.ToString().ToLower()
+            })
+    });
+</script>

@@ -1,0 +1,14 @@
+﻿@using TDSCoreLib
+@{
+
+    var list = (List<TDS_State>)ViewData["list"];
+
+}
+<select name="@ViewData.TemplateInfo.HtmlFieldPrefix">
+    <option value="">请选择</option>
+    @foreach (var item in list)
+    {
+        var radioId = item.CODE;
+        <option value="@item.CODE">@item.NAME</option>
+    }
+    </select>

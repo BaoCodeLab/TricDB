@@ -1,0 +1,152 @@
+﻿@using Main.Extensions;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@AppConfigurtaionServices.Configuration["AppSettings:name_zh_CN"]">
+    <link rel="shortcut icon" href="~/fav.ico">
+    <!-- App title -->
+    <title>@AppConfigurtaionServices.Configuration["AppSettings:name_zh_CN"]@AppConfigurtaionServices.Configuration["AppSettings:version"]</title>
+    <script src="~/js/main.js" charset="utf-8"></script>
+    <script src="~/js/jquery.cookie.js"></script>
+    <script src="~/js/menu.js"></script>
+    <script type="text/javascript" src="~/formdesigner/js/laydialog.min.js"></script>
+</head>
+<body class="layui-layout-body layadmin-tabspage-none">
+    <div id="LAY_app">
+        <div class="layui-layout layui-layout-admin">
+            <div class="layui-header layui-bg-gray">
+                <ul class="layui-nav layui-layout-left">
+                    <li class="layui-nav-item layadmin-flexible" lay-unselect="">
+                        <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                            <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="layui-nav layui-layout-right">
+                    <li class="layui-nav-item">
+                        <a lay-href="/view/pf/msg/state" layadmin-event="message" lay-text="消息中心">
+                            <i class="layui-icon layui-icon-notice"></i>
+                            <!-- 如果有新消息，则显示小圆点 -->
+                            <span id="tip_msg" class="layui-badge-dot"></span>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+                        <a href="javascript:;" layadmin-event="fullscreen">
+                            <i class="layui-icon layui-icon-screen-full"></i>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a id="name" href="javascript:;">
+                            <img src="~/images/user1.jpg" class="layui-nav-img">
+
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a id="userinfo" href="javascript:;">基本资料</a></dd>
+                            <dd><a id="password" href="javascript:;">修改密码</a></dd>
+                            <dd><a id="dk" href="javascript:;" onclick="android.dk();">打卡</a></dd>
+                        </dl>
+
+
+
+                    </li>
+                    <li class="layui-nav-item"><a href="/logout">退出</a></li>
+                </ul>
+            </div>
+
+            <div class="layui-side layui-bg-cyan layui-side-menu">
+                <div class="layui-side-scroll" id="menusrolls">
+                    <div class="layui-logo" lay-href="index"></div>
+                    <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu"></ul>
+                </div>
+            </div>
+            <!-- 页面标签 -->
+            <div class="layadmin-pagetabs" id="LAY_app_tabs">
+                <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+                <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+                <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                    <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                        <li class="layui-nav-item" lay-unselect>
+                            <a href="javascript:;"></a>
+                            <dl class="layui-nav-child layui-anim-fadein">
+                                <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                                <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                                <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+                <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+                    <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                        <li lay-id="index" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="layui-body" id="LAY_app_body">
+                <div class="layadmin-tabsbody-item layui-show">
+                    @RenderBody()
+                </div>
+            </div>
+
+            <div class="layadmin-body-shade" layadmin-event="shade"></div>
+            <div class="layui-footer" style="line-height:25px; height:25px;">
+                Copyright ©@DateTime.Now.Year @AppConfigurtaionServices.Configuration["AppSettings:copyright"]  &nbsp;&nbsp;
+            </div>
+        </div>
+        <script type="text/javascript">
+            layui.use('element', function () {
+                var element = layui.element;
+
+            });
+        </script>
+
+
+        @RenderSection("scripts", required: false)
+    </div>
+    <script type="text/javascript">
+
+        layui.use(['element', 'layer'], function () {
+        var element = layui.element,layer = layui.layer
+    //获取当前账户的中文名称
+    $.get('@Url.Action("GetCurrentUser", "UserAPI")', {}, function (data) {
+        var name = null;
+        if (data.data.PF_PROFILE == null) {
+            name = data.data.username;
+        } else {
+            name = data.data.PF_PROFILE.NAME;
+        }
+        $('#name').html("<img src='/images/user1.jpg' class='layui-nav-img'>"
+                            + name);
+        $('#userinfo').click(function () {
+            layer.open({
+                type: 2,
+                area: ['90%', '80%'],
+                offset: '50px',
+                content: '@Url.Action("UserDaDetails", "PF_User")?username=' + data.data.username
+            });
+
+        });
+    });
+
+    $('#tip_msg').hide();
+    $('#password').click(function () {
+            layer.open({
+                type: 2,
+                skin: 'lay-auto-size',
+                // maxHeight: 1000,
+                offset: '50px',
+                content: '@Url.Action("ModifyMyPsw", "User")',
+                success: function (layero, index) {
+                    layer.iframeAuto(index);
+                }
+            });
+
+        })
+
+   
+    });
+    </script>
+</body>
+</html>

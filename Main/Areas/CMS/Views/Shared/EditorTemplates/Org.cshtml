@@ -1,0 +1,13 @@
+﻿<input name="ORGPATH" id="ORGPATH" type="hidden">
+<input name="ORGNAME" id="ORGNAME" type="text" class="layui-input">
+<script type="text/javascript">
+
+    $("#ORGNAME").click(function () {
+        layer.open({
+            type: 2,
+            area: ['100%', '100%'],
+            content: '@Url.Action("Orglist", "FD_FORM_PERMISSION")'
+        });
+    });
+
+</script>

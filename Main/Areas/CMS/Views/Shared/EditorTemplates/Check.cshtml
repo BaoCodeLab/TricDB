@@ -1,0 +1,31 @@
+﻿@using TDSCoreLib
+@{
+
+    var list = (List<TDS_State>)ViewData["list"];
+
+}
+
+    @foreach (var item in list)
+    {
+        var radioId = item.CODE;
+        <input type="checkbox" class="ck_@ViewData.TemplateInfo.HtmlFieldPrefix" title="@item.NAME" value="@item.CODE" lay-filter="@ViewData.TemplateInfo.HtmlFieldPrefix"/>
+
+    }
+<input type="hidden" name="@ViewData.TemplateInfo.HtmlFieldPrefix" id="@ViewData.TemplateInfo.HtmlFieldPrefix" value="">
+<script type="text/javascript">
+    layui.use(['form'], function () {
+        var list = [];
+        layui.form.on('checkbox(@ViewData.TemplateInfo.HtmlFieldPrefix)', function (data) {
+            var v = "'" + data.value + "'"
+            if (data.elem.checked) {
+
+                list.push(v);
+
+            } else {
+                list.pop(v);
+
+            }
+            $("#@ViewData.TemplateInfo.HtmlFieldPrefix").val(list.join(','));
+        });
+    });
+</script>

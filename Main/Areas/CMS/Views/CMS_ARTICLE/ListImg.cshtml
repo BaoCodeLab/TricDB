@@ -1,0 +1,30 @@
+﻿@using Main.Extensions
+@{
+    ViewBag.Title = "图片列表";
+}
+<div class="layui-container">
+    <div class="layui-row">
+        <div id="listImg"></div>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'laydate', 'layedit', 'jquery'], function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+        $(function () {
+            var arr = window.localStorage.getItem("imgList").split('|');
+            if (arr != undefined && arr != null && arr.length > 0) {
+                var list = "";
+                for (var i = 0; i < arr.length; i++) {
+                    list += "<div class='layui-col-md4'><img width='200' height='160' src='" + arr[i] + "' class='listimg'/></div>";
+                }
+                $("#listImg").html(list);
+            }
+            $(".listimg").on("click", function () {
+                window.localStorage.setItem("ret", $(this).attr("src"));
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            });
+        });
+    });
+</script>

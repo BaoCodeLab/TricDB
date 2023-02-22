@@ -1,0 +1,126 @@
+﻿@using Main.Extensions
+@using Main.ViewModels;
+@model VM_CMS_AD
+<script type="text/javascript" charset="utf-8" src="~/js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="~/js/ueditor/editor_api.js"></script>
+<div class="layui-card" style="margin-bottom:0">
+    <div class="layui-card-header">编辑</div>
+    <div class="layui-card-body">
+        <form action='@Url.Action("Update", "API_CMS_AD")' method="post" class="layui-form layui-form-pane" lay-filter="mainform" id="mainform">
+            @Html.AntiForgeryToken()
+            <div class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-md3 layui-col-sm4" style="display:none;">
+                        <div class="layui-fluid">
+                            <label asp-for="ADID" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="ADID" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="ADNAME" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="ADNAME" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="CREATE_DATE" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="CREATE_DATE" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4 layui-col-sm4">
+                        <div class="layui-fluid">
+                            <label asp-for="BZ" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="BZ" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md12 layui-col-sm12">
+                        <div class="layui-fluid">
+                            <label asp-for="ADTEXT" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <textarea id="AdContent" name="AdContent"></textarea>
+                                <input asp-for="ADTEXT" class="hidden" style="display:none;" />
+                                <script type="text/javascript">
+                                    var ue = UE.getEditor('AdContent', {
+                                        //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+                                        //toolbars: [['FullScreen', 'Source', 'Undo', 'Redo', 'Bold', 'test']],
+                                        toolbars: [
+                                            ['Source', '|', 'Undo', 'redo', '|', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'forecolor', 'backcolor', 'removeformat', '|',
+                                                'insertorderedlist', 'insertunorderedlist', '|', 'selectall', 'cleardoc', 'paragraph', 'fontfamily', 'fontsize',
+                                                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+                                                'link', 'unlink', '|', 'emotion', 'image', 'video', 'map', '|', 'horizontal', 'print', 'preview', 'fullscreen', 'drafts', 'formula']
+                                        ],
+                                        //focus时自动清空初始化时的内容
+                                        autoClearinitialContent: true,
+                                        //关闭字数统计
+                                        wordCount: false,
+                                        //关闭elementPath
+                                        elementPathEnabled: false,
+                                        //默认的编辑区域高度
+                                        initialFrameHeight: 240
+                                        //更多其他参数，请参考ueditor.config.js中的配置项
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="layui-container">
+                <div class="layui-row">
+                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" style="padding:0 5px">
+                        <a class="layui-btn layui-btn-warm layui-btn-fluid" id="submit">
+                            保存
+                        </a>
+                    </div>
+                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" style="padding:0 5px">
+                        <button class="layui-btn layui-btn-normal layui-btn-fluid" id="reset">
+                            清空
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use(['form', 'layer', 'table'], function () {
+        var form = layui.form, layer = layui.layer, table = layui.table;
+        form.render();
+        var o_data;
+        $.get('@Url.Action("Get", "API_CMS_AD",new{ADID=Model.ADID})', function (data) {
+            form.val("mainform", data);
+            o_data = data;
+            UE.getEditor('AdContent').setContent($("#ADTEXT").val(), false);
+        });
+        $("#reset").click(function () {
+            form.val("mainform", o_data);
+        });
+        $("#submit").click(function () {
+            if ($("#mainform").valid()) {
+                var arr = UE.getEditor('AdContent').getContent();
+                document.getElementById("ADTEXT").value = arr;
+                $("#mainform").ajaxSubmit({
+                    type:"PUT",
+                    success: function (d) {
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layui.table.reload('table');
+                        parent.layer.close(index);
+                    },
+                    error: function (d) {
+                        layer.alert(d.responseJSON.msg);
+                    }
+                });
+            }
+        });
+    });
+</script>

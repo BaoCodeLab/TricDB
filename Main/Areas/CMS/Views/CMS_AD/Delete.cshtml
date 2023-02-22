@@ -1,0 +1,73 @@
+﻿@model Model.Model.CMS_AD
+
+@{
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CMS_AD</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ADNAME)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ADNAME)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ADTEXT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ADTEXT)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IS_DELETE)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IS_DELETE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATE_DATE)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_DATE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MODIFY_DATE)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MODIFY_DATE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OPERATOR)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OPERATOR)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BZ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BZ)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

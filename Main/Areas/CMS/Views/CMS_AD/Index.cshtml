@@ -1,0 +1,191 @@
+﻿@using Main.ViewModels;
+@using TDSCoreLib;
+@model VM_CMS_AD
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">功能名称</div>
+        <div class="layui-card-body">
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-mb10">
+                    <button class="layui-btn layui-btn-sm layui-btn-normal" data-type="create">
+                        <i class="layui-icon layui-icon-add-circle"></i>新建
+                    </button>
+                    <button class="layui-btn layui-btn-sm layui-btn-normal" data-type="refresh">
+                        <i class="layui-icon layui-icon-refresh"></i>刷新
+                    </button>
+                    <button class="layui-btn layui-btn-sm layui-btn-danger" data-type="bulkdelete">
+                        <i class="layui-icon layui-icon-delete"></i>批量删除
+                    </button>
+                </div>
+                <div class="layui-col-md7 layui-col-sm12">
+                    <form action='@Url.Action("Get", "API_CMS_AD")' method='get' id='searchform' lay-filter='searchform' class='layui-form' style='float:right' onsubmit='return false'>
+                        <div class="layui-row">
+                            <div class="layui-col-md3 layui-col-sm3 layui-col-xs12 layui-mb10">
+                                <select name="searchfield" lay-verify="required">
+                                    @foreach (var item in LayUIHelper.ObjectToLayUISeachField(Model))
+                                    {
+                                        <option value="@item.Key">@item.Value</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="layui-col-md6 layui-col-sm6 layui-col-xs12 layui-mb10"><input type="text" class="layui-input" placeholder="输入检索关键词" data-val="true" data-val-required="请填写检索词" name="searchword" /></div>
+                            <div class="layui-col-md3 layui-col-sm3 layui-col-xs12 layui-mb10"><button class="layui-btn layui-btn-normal layui-btn-fluid" data-type="search"><i class="layui-icon layui-icon-search"></i>检索</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <table class="layui-table" id="table" lay-size="sm" lay-filter="filter" lay-data="{page:{limit:10,theme:'#1E9FFF'}, url: '@Url.Action("Get", "API_CMS_AD")',loading:true,size:'sm',height:'full-145',toolbar:'#toolbarDemo'}">
+                <thead>
+                    <tr>
+                        <th lay-data="{type:'checkbox'}"></th>
+                        @foreach (var item in LayUIHelper.ObjectToLayUITableHeader(Model))
+                        {
+                            <th lay-data="{field:'@Html.DisplayFor(modelItem => item.Field)',@item.Style, sort: @item.Sort,totalRow:@item.TotalRow,width:@item.Width,minWidth:@item.MinWidth,edit:'@item.Edit',event:'@item.Event',fixed:'@item.Fixed'}"> @item.Title</th>
+                        }
+                        <th lay-data="{ fixed: 'right', width: 120, title: '操作', align: 'center', toolbar: '#tool' }"></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="toolbarDemo">
+</script>
+<script type="text/html" id="tool">
+    <div class="layui-btn-group">
+        <button class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail"><i class="layui-icon layui-icon-read"></i></button>
+        <button class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
+        <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i></button>
+    </div>
+</script>
+<script type="text/html" id="detail">
+    <div class="layui-card">
+        <div class="layui-card-body layui-text">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="100">
+                    <col>
+                </colgroup>
+                <tbody>
+                    @foreach (var item in LayUIHelper.ObjectToLayUITableHeader(Model))
+                    {
+                        <tr>
+                            <td><b>@item.Title</b></td>
+                            <td>{{d.@item.Field}}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    layui.use(['laytpl', 'laypage', 'table', 'form', 'layer'], function () {
+        var table = layui.table, laytpl = layui.laytpl, form = layui.form;
+        table.on('tool(filter)', function (obj) {
+            var data = obj.data
+            , layEvent = obj.event;
+            if (layEvent === 'detail') {
+                layer.open({
+                    type: 2,
+                    area:['90%','500px'],
+                    offset: '50px',
+                    content: '@Url.Action("Details", "CMS_AD")?ADID=' + data["ADID"]
+                });
+            } else if (layEvent === 'del') {
+                layer.confirm('确认删除吗？', function (index) {
+                    $.ajax({
+                        method: "Delete",
+                        url: '@Url.Action("Delete", "API_CMS_AD")',
+                        data: { ADID: data["ADID"] },
+                        success: function (data) {
+                            if (data.success) {
+                                obj.del();
+                                layer.close(index);
+                            }
+                        },
+                        error: function (data) {
+                            layer.alert(data.responseJSON.msg)
+                        }
+                    });
+                });
+            } else if (layEvent === 'edit') {
+                layer.open({
+                    type: 2,
+                    area:['90%','90%'],
+                    offset: '20px',
+                    content: '@Url.Action("Edit", "CMS_AD")/' + data["ADID"]
+                });
+            }
+        });
+        table.on('sort(filter)', function (obj) {
+            table.reload('table', {
+                initSort: obj
+                , where: {
+                    field: obj.field
+                  , order: obj.type
+                }
+            });
+        });
+
+        var active = {
+            create: function () {
+                layer.open({
+                    type: 2,
+                    area: ['90%', '90%'],
+                    move: false,
+                    offset: '10px',
+                    content: '@Url.Action("Create", "CMS_AD")'
+                });
+           }
+          , refresh: function () {
+              table.reload('table', { where: { searchfield: "", searchword: "" } });
+          }
+          , search: function () {
+              if ($("#searchform").valid()) {
+                  table.reload("table", {
+                      where: $("form").serializeJSON()
+                      , page: { curr: 1 }
+                  });
+              }
+          }
+          , bulkdelete: function () {
+                      var data = table.checkStatus('table').data;
+                      if (data.length > 0) {
+                          var gids = "";
+                          for (var i = 0; i < data.length; i++) {
+                              gids += data[i].ADID + ";"
+                          }
+                          layer.confirm('确认删除选中的' + data.length + '条数据吗？', {
+                              btn: ['确认', '取消']
+                              , btn1: function (index) {
+                                  $.ajax({
+                                      method: 'Delete',
+                                      url: '@Url.Action("bulkDelete", "API_CMS_AD")',
+                                      data: { gids: gids },
+                                      success: function (d) {
+                                          layer.alert(d.msg);
+                                          table.reload("table");
+                                      },
+                                        error: function (d) {
+                                            layer.alert(d.responseJSON.msg);
+                                        }
+                                  });
+                              }
+                              , btn2: function (index) {
+                                  layer.close(index);
+                              }
+                          });
+                      }
+                      else {
+                          layer.alert("请先选中要删除的数据");
+                      }
+                  }
+        };
+        $('button[data-type]').click(function () {
+            var type = $(this).data('type');
+            active[type] && active[type].call(this);
+        });
+
+    });
+</script>

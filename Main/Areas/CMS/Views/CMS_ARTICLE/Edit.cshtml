@@ -1,0 +1,263 @@
+﻿@using Main.Extensions
+@using Main.ViewModels;
+@model VM_CMS_ARTICLE;
+@using Model.Model
+@using Newtonsoft.Json
+@using Main.platform;
+<script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+<script type="text/javascript" charset="utf-8" src="~/js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="~/js/ueditor/editor_api.js"></script>
+<div class="layui-card" style="margin-bottom:0">
+    <div class="layui-card-body">
+        <form action='@Url.Action("Update", "API_CMS_ARTICLE")' method="post" class="layui-form layui-form-pane" lay-filter="mainform" id="mainform">
+            @Html.AntiForgeryToken()
+            <div class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-md3 layui-col-sm4" style="display:none;">
+                        <div class="layui-fluid">
+                            <label asp-for="ARTICLEID" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="ARTICLEID" class="layui-input" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4" style="display:none;">
+                        <div class="layui-fluid">
+                            <label asp-for="CHANNELID" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="CHANNELID" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4" style="display:none;">
+                        <div class="layui-fluid">
+                            <label asp-for="CREATE_DATE" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="CREATE_DATE" class="layui-input" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4" style="display:none;">
+                        <div class="layui-fluid">
+                            <label asp-for="MODIFY_DATE" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="MODIFY_DATE" class="layui-input" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3 layui-col-sm4" style="display:none;">
+                        <div class="layui-fluid">
+                            <label asp-for="IS_DELETE" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="IS_DELETE" class="layui-input" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md12 layui-col-sm12">
+                        <div class="layui-fluid">
+                            <label asp-for="ARTICLETITLE" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <table><tr><td><input asp-for="ARTICLETITLE" class="layui-input" maxlength="256" size="256" /></td><td><input type="button" class="layui-btn layui-btn-normal layui-btn-warm" id="summary" value="详情" /></td></tr></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item detail layui-col-md12 layui-col-sm12" style="display:none;">
+                        <div class="layui-col-md3 layui-col-sm4">
+                            <div class="layui-fluid">
+                                <label asp-for="ARTICLETOPNUM" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <input asp-for="ARTICLETOPNUM" class="layui-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-sm4">
+                            <div class="layui-fluid">
+                                <label asp-for="ARTICLEHIT" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <input asp-for="ARTICLEHIT" class="layui-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-sm4">
+                            <div class="layui-fluid">
+                                <label asp-for="ARTICLETIME" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <input asp-for="ARTICLETIME" class="layui-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-sm4">
+                            <div class="layui-fluid">
+                                <label asp-for="ISPUB" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    @Html.EditorFor(model => model.ISPUB)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-sm4">
+                            <div class="layui-fluid">
+                                <label asp-for="ARTICLEISTITLE" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    @Html.EditorFor(model => model.ARTICLEISTITLE)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-sm4">
+                            <div class="layui-fluid">
+                                <label asp-for="ARTICLEREDIRECT" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <input asp-for="ARTICLEREDIRECT" class="layui-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-sm4">
+                            <div class="layui-fluid">
+                                <label asp-for="ARTICLEEDITOR" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <input asp-for="ARTICLEEDITOR" class="layui-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-sm4">
+                            <div class="layui-fluid">
+                                <label asp-for="ARTICLEINDEXPIC" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <table>
+                                        <tr>
+                                            <td><input asp-for="ARTICLEINDEXPIC" class="layui-input" /></td>
+                                            <td>
+                                                <input type="button" value="识别图片" id="btn_img" class="layui-btn layui-btn-sm" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md6 layui-col-sm6">
+                            <div class="layui-fluid">
+                                <label asp-for="ARTICLEKEYWORDS" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <textarea asp-for="ARTICLEKEYWORDS" class="layui-input" style="height:60px"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md6 layui-col-sm6">
+                            <div class="layui-fluid">
+                                <label asp-for="BZ" class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <textarea asp-for="BZ" class="layui-input" style="height:60px"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md12 layui-col-sm12">
+                        <div class="layui-fluid">
+                            <label asp-for="ARTICLECONTENT" class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <input asp-for="ARTICLECONTENT" type="hidden" />
+                                <textarea id="AdContent" name="AdContent"></textarea>
+                                <script type="text/javascript">
+                                    var ue = UE.getEditor('AdContent', {
+                                        //focus时自动清空初始化时的内容
+                                        autoClearinitialContent: true,
+                                        //关闭字数统计
+                                        wordCount: false,
+                                        //关闭elementPath
+                                        elementPathEnabled: false,
+                                        //默认的编辑区域高度
+                                        initialFrameHeight: 440
+                                        //更多其他参数，请参考ueditor.config.js中的配置项
+                                    });
+                                    ue.addListener("keyup", function () {
+                                        var arr = UE.getEditor('AdContent').getContent();
+                                        document.getElementById("ARTICLECONTENT").value = arr;
+                                        var txt = UE.getEditor("AdContent").getContentTxt();
+                                        document.getElementById("ARTICLEKEYWORDS").value = txt.leftLen(80);
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="layui-container">
+                <div class="layui-row">
+                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" style="padding:0 5px">
+                        <a class="layui-btn layui-btn-warm layui-btn-fluid" id="submit">
+                            保存
+                        </a>
+                    </div>
+                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" style="padding:0 5px">
+                        <button class="layui-btn layui-btn-normal layui-btn-fluid" id="reset">
+                            清空
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use(['form', 'layer', 'table'], function () {
+        var form = layui.form, layer = layui.layer, table = layui.table;
+        form.render();
+        var o_data;
+        $.get('@Url.Action("Get", "API_CMS_ARTICLE",new{ARTICLEID=Model.ARTICLEID})', function (data) {
+            form.val("mainform", data);
+            o_data = data;
+            UE.getEditor('AdContent').setContent($("#ARTICLECONTENT").val(), false);
+        });
+        $("#reset").click(function () {
+            form.val("mainform", o_data);
+        });
+        $("#submit").click(function () {
+            if ($("#mainform").valid()) {
+                var arr = UE.getEditor('AdContent').getContent();
+                document.getElementById("ARTICLECONTENT").value = arr;
+                $("#mainform").ajaxSubmit({
+                    type:"PUT",
+                    success: function (d) {
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layui.table.reload('table');
+                        parent.layer.close(index);
+                    },
+                    error: function (d) {
+                        layer.alert(d.responseJSON.msg);
+                    }
+                });
+            }
+        });
+        $("#summary").on("click", function () {
+            if ($("#summary").val() == "详情") {
+                $(".detail").show();
+                $("#summary").val("收起");
+            } else {
+                $(".detail").hide();
+                $("#summary").val("详情");
+            }
+        });
+        $("#btn_img").on("click", function () {
+            var html = UE.getEditor('AdContent').getContent();
+            var arr = getimgsrc(html);
+            if (arr.length > 0) {
+                window.localStorage.setItem("ret", "");
+                window.localStorage.setItem("imgList", arr.join("|"));
+                var api = "/cms/article/ListImg";
+                var index = layer.open({
+                    type: 2,
+                    title: "封面图片",
+                    area: ['600px', '360px'],
+                    content: api,
+                    end: function () {
+                        if (window.localStorage.getItem("ret") != undefined && window.localStorage.getItem("ret") != "") {
+                            $("#ARTICLEINDEXPIC").val(window.localStorage.getItem("ret"));
+                        }
+                    }
+                });
+            } else {
+                layer.msg("文本正文中无图片！");
+            }
+        });
+    });
+</script>

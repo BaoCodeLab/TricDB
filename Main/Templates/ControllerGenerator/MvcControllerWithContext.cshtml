@@ -1,0 +1,180 @@
+﻿@inherits Microsoft.VisualStudio.Web.CodeGeneration.Templating.RazorTemplateBase
+@using System.Collections.Generic
+using System;
+using Microsoft.AspNetCore.Mvc;
+using Main.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using TDSCoreLib;
+using System.Collections.Generic;
+using System.IO;
+using Microsoft.AspNetCore.Authorization;
+
+@*@{
+    foreach (var namespaceName in Model.RequiredNamespaces)
+    {
+@:using @namespaceName;
+    }
+}*@
+
+namespace @Model.ControllerNamespace
+{
+@{
+    string routePrefix;
+    if (String.IsNullOrEmpty(Model.AreaName))
+    {
+        routePrefix = Model.ControllerRootName;
+    }
+    else
+    {
+        routePrefix = Model.AreaName + "/" + Model.ControllerRootName;
+    }
+    var modelProperties = new List<string>();
+    foreach(var property in Model.ModelMetadata.Properties)
+    {
+        if (property.Scaffold)
+        {
+            modelProperties.Add(property.PropertyName);//Model中的[ScaffoldColumn]标签，表示该字段使用基架
+        }
+    }
+    var bindString = string.Join(",", modelProperties);
+    var contextTypeName = Model.ContextTypeName;
+    var entitySetName = Model.ModelMetadata.EntitySetName;
+    var entitySetVar = Model.EntitySetVariable ??
+        (String.IsNullOrEmpty(entitySetName)
+            ? entitySetName
+            : (entitySetName.Substring(0, length: 1).ToLowerInvariant() + entitySetName.Substring(1)));
+    var primaryKeyName = Model.ModelMetadata.PrimaryKeys[0].PropertyName;
+    var primaryKeyShortTypeName = Model.ModelMetadata.PrimaryKeys[0].ShortTypeName;
+    var primaryKeyType = Model.ModelMetadata.PrimaryKeys[0].TypeName;
+    var primaryKeyNullableTypeName = GetNullableTypeName(primaryKeyType, primaryKeyShortTypeName);
+    var lambdaVar = Model.ModelVariable[0];
+    var relatedProperties = new Dictionary<string, dynamic>();
+    foreach(var nav in Model.ModelMetadata.Navigations)
+    {
+        relatedProperties.Add(nav.AssociationPropertyName, nav);
+
+    }
+    string baseRoute = string.Empty;
+    try {
+        string[] temp= routePrefix.Split(new char[] { '-','_','~' }, StringSplitOptions.RemoveEmptyEntries);
+        baseRoute = temp[0].ToLower()+"/"+temp[1].ToLower();
+    }
+    catch {
+        baseRoute = routePrefix.ToLower();
+    }
+
+}
+    [Route("@baseRoute"),Authorize]
+    public class @Model.ControllerName : Controller
+    {
+        VM_@routePrefix viewModel = new VM_@(routePrefix)();
+
+        // GET: @routePrefix
+       /// <summary>
+       /// 绑定页面基本视图
+       ///</summary>
+       /// <returns>@(routePrefix)视图模型</returns>
+        [HttpGet]
+        public ActionResult Index()
+        {
+    
+            return View("Index", viewModel);
+    
+        }
+
+        // GET: @baseRoute/Details/@primaryKeyName   
+        /// <summary>
+        /// 绑定查看详情页面
+        ///</summary>
+       /// <returns>@(routePrefix)视图模型</returns>
+        [HttpGet("{@primaryKeyName}")]
+        public ActionResult Details([FromRoute]string @primaryKeyName)
+        {
+            viewModel.@primaryKeyName=@primaryKeyName;
+            if (@primaryKeyName == null)
+            {
+                return NotFound();
+            }
+            else{
+                return View("Details",viewModel);
+                
+            }
+        }
+
+        // GET: @baseRoute/Create
+        /// <summary>
+        /// 绑定新建数据表单
+        ///</summary>       
+        /// <returns>@(routePrefix)视图模型</returns>
+        [HttpGet,Route("create")]
+        public ActionResult Create()
+        {
+           return View("Create",viewModel);
+        }
+
+        // GET: @baseRoute/Edit/@primaryKeyName
+        /// <summary>
+        /// 绑定编辑数据表单
+        ///</summary>
+        /// <returns>@(routePrefix)视图模型</returns>
+        [HttpGet("{@primaryKeyName?}")]
+        public ActionResult Edit([FromRoute]string @primaryKeyName)
+        {
+            viewModel.@primaryKeyName=@primaryKeyName;
+            if (@primaryKeyName == null)
+            {
+                return NotFound();
+            }
+            else{
+                return View("Edit",viewModel);
+            }
+        }
+
+        private IHostingEnvironment _hostingEnvironment;
+
+        public @(Model.ControllerName)(IHostingEnvironment hostingEnvironment)
+        {
+            _hostingEnvironment = hostingEnvironment;
+        }
+        /// <summary>
+        /// 导出数据
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet,Route("export")]
+        public ActionResult ExportXls()
+        {
+            string apiURI = Url.Action("Get", "API_@(routePrefix)",null, HttpContext.Request.IsHttps?"https":"http")+"/all";
+            var dataList= HttpClientHelper.GetResponse< List<VM_@(routePrefix)>>(apiURI);
+            string filePath = "";
+            XlsGenerator.createXlsFile<VM_@(routePrefix)>(dataList, "数据", _hostingEnvironment.WebRootPath, out filePath);
+            var dt = DateTime.Now.ToString("yyyyMMdd");
+            string fileName = "@(baseRoute)_" + dt + ".xls";
+            filePath = _hostingEnvironment.ContentRootPath + "\\wwwroot" + filePath;
+            Response.Headers.Add("content-disposition", "attachment;filename=" + fileName);
+            return File(new FileStream(filePath, FileMode.Open), "application/excel", fileName);
+    }
+}
+    }
+@functions
+{
+    string GetNullableTypeName(string typeName, string shortTypeName)
+    {
+        Type primaryKeyType = null;
+        try
+        {
+            primaryKeyType = Type.GetType(typeName);
+        }
+        catch
+        {
+        }
+        if (primaryKeyType != null && (Microsoft.VisualStudio.Web.CodeGeneration.Templating.TypeUtilities.IsTypePrimitive(primaryKeyType) || IsGuid(typeName)))
+        {
+            return shortTypeName + "?";
+        }
+        return shortTypeName;
+    }
+
+    bool IsGuid(string typeName) {
+        return String.Equals("System.Guid", typeName, StringComparison.OrdinalIgnoreCase);
+    }
+}

@@ -1,0 +1,113 @@
+﻿@inherits Microsoft.VisualStudio.Web.CodeGeneration.Templating.RazorTemplateBase
+@using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore
+@using System.Reflection;
+@using System.ComponentModel.DataAnnotations;
+@using TDSCoreLib;
+@@using Main.Extensions
+@@using Main.ViewModels;
+@@model VM_@(Model.ViewDataTypeShortName)
+@{
+@:<div class="layui-card" style="margin-bottom:0">
+@:    <div class="layui-card-body">
+@:        <form action='@@Url.Action("Update", "API_@(Model.ViewDataTypeShortName)")' method="post" class="layui-form layui-form-pane" lay-filter="mainform" id="mainform">
+    @:            @@Html.AntiForgeryToken()
+    @:            <div class="layui-form-item">
+    @:<div class="layui-row">
+    var primaryKeyName = Model.ModelMetadata.PrimaryKeys[0].PropertyName; 
+    Type t = Assembly.Load(new AssemblyName("Main")).GetType("Main.ViewModels.VM_"+Model.ViewDataTypeShortName);
+    PropertyInfo[] pi = t.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+    foreach (PropertyInfo p in pi)
+    {   
+        @:<div class="layui-col-md4 layui-col-sm12">
+        if (p.GetCustomAttribute(typeof(AllowModifyAttribute)) != null)
+        {
+            @:<div class="layui-fluid">
+                @:<label asp-for="@p.Name" class="layui-form-label"></label>
+                @:<div class="layui-input-block">
+             if (p.GetCustomAttribute(typeof(UIHintAttribute)) != null)
+            {
+                UIHintAttribute ui = p.GetCustomAttribute(typeof(UIHintAttribute)) as UIHintAttribute;
+                if (ui.UIHint.ToLower() == "org") {
+                    @:@@Html.EditorFor(model => model.@p.Name)
+                }
+                else if (ui.UIHint.ToLower() == "date") {
+                  @:@@Html.EditorFor(model => model.@p.Name, new { range = "@ui.PresentationLayer" })
+                }
+                else
+                {
+                @:@@Html.EditorFor(model => model.@p.Name, new { list = StateHelper.getStates("@ui.PresentationLayer") })
+                    }
+                }
+            else if (p.PropertyType==typeof(Boolean)||p.PropertyType==typeof(Boolean?))
+            {
+                @:@@Html.EditorFor(model => model.@p.Name)
+            }
+            else
+            {
+                @:<input asp-for="@p.Name" class="layui-input" />
+            }
+            @:</div>
+        @:</div>
+        }
+        else { 
+            @:<div class="layui-fluid">
+                @:<label asp-for="@p.Name" class="layui-form-label"></label>
+                @:<div class="layui-input-block">
+                    @:<input asp-for="@p.Name" class="layui-input" readonly/>
+                @:</div>
+            @:</div>
+        }
+        @:</div>
+    }
+    @:</div>
+    @:</div>
+@:            <hr />
+@:            <div class="layui-container">
+    @:                <div class="layui-row">
+        @:                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" style="padding:0 5px">
+            @:                        <button type="button" class="layui-btn layui-btn-warm layui-btn-fluid" id="submit">
+                @:                            保存
+                @:</button>
+            @:</div>
+        @:                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" style="padding:0 5px">
+            @:                        <button type="button" class="layui-btn layui-btn-normal layui-btn-fluid" id="reset">
+                @:                           清空
+                @:</button>
+            @:</div>
+        @:</div>
+    @:</div>
+@:</form>
+@:    </div>
+@:</div>
+@:<script type="text/javascript">
+@:    layui.use(['form', 'layer', 'table'], function () {
+@:        var form = layui.form, layer = layui.layer, table = layui.table;
+@:        form.render();
+@:        var o_data;
+@:        $.get('@@Url.Action("Get", "API_@(Model.ViewDataTypeShortName)",new{@primaryKeyName=Model.@primaryKeyName})', function (data) {
+@:            form.val("mainform", data);
+@:            o_data = data;
+@:        });
+@:        $("#reset").click(function () {
+@:            form.val("mainform", o_data);
+@:        });
+@:        $("#submit").click(function () {
+@:            if ($("#mainform").valid()) {
+@:                $("#submit").attr("disabled", true);
+@:                $("#mainform").ajaxSubmit({
+@:                    type:"PUT",
+@:                    success: function (d) {
+@:                        var index = parent.layer.getFrameIndex(window.name);
+@:                        parent.layui.table.reload('table');
+@:                        parent.layer.close(index);
+@:                    },
+@:                    error: function (d) {
+@:                        layer.alert(d.responseJSON.msg);
+@:                        $("#submit").removeAttr("disabled");
+@:                    }
+@:                });
+@:            }
+@:        });
+@:    });
+@:</script>
+    }
